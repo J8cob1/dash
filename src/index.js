@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import './styles.css';
+import Particles from 'react-particles-js';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+          <div className="center">
+            <h1> Personal Organizer </h1>
+            <App />
+          </div>
   </React.StrictMode>,
   document.getElementById('root')
 );

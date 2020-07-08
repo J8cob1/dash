@@ -1,0 +1,9 @@
+.center {
+    margin: auto;
+    width: 50%;
+}
+
+.background {
+    z-index: -1;
+    opacity: 70%;
+}
