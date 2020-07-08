@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './styles.css';
-import Background from "./Background";
 import Particles from 'react-particles-js';
 
 ReactDOM.render(
