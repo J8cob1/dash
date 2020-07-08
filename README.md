@@ -1,7 +1,7 @@
 # helpful-organizers
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/psu-oss-group-personalOrganizers/helpful-organizers/blob/master/LICENSE)
 
-Copyright (c) 2020 Michael Change, Jacob Crisan, Trevor Hensel, Shengjia He
+Copyright © 2020 Michael Change, Jacob Crisan, Trevor Hensel, Shengjia He
 
 ## Project Participants:
 
