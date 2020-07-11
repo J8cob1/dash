@@ -5,12 +5,16 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './styles.css';
 import Particles from 'react-particles-js';
+import Topbar from './Topbar';
+import Footer from './Footer';
+
 
 ReactDOM.render(
   <React.StrictMode>
           <div className="center">
-            <h1> Personal Organizer </h1>
+            <Topbar/>
             <App />
+            <Footer/>
           </div>
   </React.StrictMode>,
   document.getElementById('root')
