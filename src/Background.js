@@ -34,14 +34,6 @@ class Background extends Component {
     render() {
         const styles = reactCSS({
             'default': {
-                // body: {
-                //     background: `rgba(
-                //         ${ this.state.color.r }, 
-                //         ${ this.state.color.g }, 
-                //         ${ this.state.color.b }, 
-                //         ${ this.state.color.a })`,
-                // },
-
                 color: {
                     width: '36px',
                     height: '14px',
