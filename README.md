@@ -6,9 +6,9 @@ Copyright © 2020 Michael Change, Jacob Crisan, Trevor Hensel, Shengjia He
 ## Project Participants:
 
 - Jacob Crisan
-- [Michael Change](micchang@pdx.edu)
+- [Michael Change](mailto:micchang@pdx.edu)
 - Shengjia He
-- [Trevor Hensel](hensel@pdx.edu)
+- [Trevor Hensel](mailto:hensel@pdx.edu)
 
 ## Tech stack
 Fronted:
