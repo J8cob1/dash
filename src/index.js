@@ -7,13 +7,15 @@ import './styles.css';
 import Particles from 'react-particles-js';
 import Topbar from './Topbar';
 import Footer from './Footer';
+import SideBar from "./SideBar";
 
 
 ReactDOM.render(
   <React.StrictMode>
           <div className="center">
             <Topbar/>
-            <App />
+            <App>
+            </App>
             <Footer/>
           </div>
   </React.StrictMode>,
