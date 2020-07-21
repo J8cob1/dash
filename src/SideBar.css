@@ -12,7 +12,6 @@ Used to create SideBar for Dash
     outline: none;
     z-index: 1;
     background-color: rgba(64, 194, 133, 0.693);
-    opacity: 60%;
     border-color: rgba(64, 194, 133, 0.693);
     border-left: 0;
 }
