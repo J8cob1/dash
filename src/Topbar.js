@@ -1,3 +1,6 @@
+// https://react-bootstrap.github.io/components/navbar/
+// Get the example from the above link
+
 import React, { Component } from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Background from './Background'
