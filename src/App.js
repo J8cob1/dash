@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import CalendarWidget from './CalendarWidget';
 import SideBar from "./SideBar";
 import Quote from "./Quote";
+import Weather from "./Weather";
 import {getQuote} from "./QuoteAPI";
 
 import Draggable from "react-draggable";
@@ -16,6 +17,7 @@ function App() {
         twitter: false,
         mail: false,
         quote: false,
+        weather: false,
         quoteX: 0,
         QuoteY: 0,
         quoteData: '',
@@ -75,6 +77,20 @@ function App() {
         }
         console.log("Clicked Quote");
     };
+    const toggleWeather = () => error => {
+        if(state.weather){
+            setState({
+                ...state,
+                weather: false
+            })
+        } else {
+            setState({
+                ...state,
+                weather: true
+            })
+        }
+        console.log("Clicked Weather");
+    };
   return (
     <div>
         <SideBar
@@ -83,6 +99,7 @@ function App() {
             toggleTwitter={toggleTwitter}
             toggleMail={toggleMail}
             toggleQuote={toggleQuote}
+            toggleWeather={toggleWeather}
         />
         <Draggable>
             <div className="Widget">
@@ -94,6 +111,11 @@ function App() {
             <Quote
                 data={state.quoteData}
                 author={state.quoteAuthor}
+            />
+        }
+
+        {state.weather &&
+            <Weather
             />
         }
     </div>

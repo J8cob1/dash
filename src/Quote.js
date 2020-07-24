@@ -19,7 +19,7 @@ export default function Quote(props){
                 {data}
                 <br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;-{author}
-            </div>
+                </div>
         </Draggable>
     );
 }

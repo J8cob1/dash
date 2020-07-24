@@ -7,9 +7,10 @@ import React from "react";
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { FiMail } from 'react-icons/fi';
 import { BsChatQuote } from 'react-icons/bs';
+import { TiWeatherPartlySunny } from 'react-icons/ti';
 
 export default function SideBar(props) {
-    const {width, height, toggleTwitter, toggleMail, toggleQuote} = props;
+    const {width, height, toggleTwitter, toggleMail, toggleQuote, toggleWeather} = props;
     const [xPosition, setX] = React.useState(-width);
 
     const toggleMenu = () => {
@@ -63,6 +64,14 @@ export default function SideBar(props) {
                         className="button"
                     >
                         <BsChatQuote/>
+                    </button>
+                </div>
+                <div className="content">
+                    <button
+                        onClick={toggleWeather()}
+                        className="button"
+                    >
+                        <TiWeatherPartlySunny/>
                     </button>
                 </div>
             </div>
