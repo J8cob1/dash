@@ -1,0 +1,42 @@
+/* Calendar Styles */
+/* https://www.w3schools.com/cssref/css_selectors.asp */
+
+/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+/* https://www.w3schools.com/css/css3_flexbox.asp */
+.calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.events {
+  width: 100%;
+}
+.events div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.event-title {
+  font-weight: bold; /* https://www.w3schools.com/cssref/pr_font_weight.asp maybe*/
+  font-size: medium; /* Good reference I probalby didn't use because I learned about it earlier: https://www.w3schools.com/cssref/pr_font_font-size.asp */
+}
+.date {
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+}
+
+.placeholder {
+  text-align: center;
+  font-style: italic; /* https://www.w3schools.com/cssref/pr_font_font-style.asp maybe */
+  font-size: medium;
+}
+
+.react-calendar {
+  width: 100%;
+}
+/* https://www.w3schools.com/cssref/sel_firstchild.asp */
+.react-calendar__month-view__days {
+  min-height: 400px;
+}

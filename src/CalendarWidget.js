@@ -1,6 +1,7 @@
 import React from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import "./cal.css";
 
 class CalendarWidget extends React.Component {
   // For scoping reasons
@@ -52,34 +53,28 @@ class CalendarWidget extends React.Component {
     let calendarEvents = []
     this.state.events.forEach(event => {
       calendarEvents.push(
-        <div 
-          className="calendarItem"
-          style={{
-            "margin-top":"10px",
-            "margin-bottom":"10px"
-          }}
-        >
-          <div style={{"font-weight":"bold", "font-size": "medium"}}>{event.title}</div>
-          <div>{event.description}</div>
+        <div>
+          <div className="event-title">{event.title}</div>
+          <p className="event-description">{event.description}</p>
         </div>
       )
     })
 
+    // Create a placeholder item in case there are no events for the day
+    let placeHolder = <div className="placeholder">No events for the day!</div>
+
     return (
-      <div className="Calendar" style={{"margin-top":"100px", "display":"flex", "flex-direction":"column", "align-items":"center"}}>
+      <div className="calendar">
         <Calendar
           onChange={this.getCalendarEvents}
           defaultValue={new Date()}
         />
-        <div>
-          <div
-            className="date"
-            style={{"text-align":"center", "margin-top":"30px", "font-weight": "bold", "font-size": "large"}}
-          >
+        <div className="events">
+          <div className="date">
             {this.state.date}
           </div>
           <div className="events">
-            {calendarEvents}
+            {(calendarEvents.length !== 0) ? calendarEvents : placeHolder}
           </div>
         </div>
       </div>
@@ -102,3 +97,4 @@ export default CalendarWidget;
 // https://stackoverflow.com/questions/26059762/callback-when-dom-is-loaded-in-react-js
 // This one for sure though: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString
 // Maybe this, but not really: https://stackoverflow.com/questions/3552461/how-to-format-a-javascript-date
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
