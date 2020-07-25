@@ -7,9 +7,10 @@ import React from "react";
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { FiMail } from 'react-icons/fi';
 import { BsChatQuote } from 'react-icons/bs';
+import { WiCloudyWindy } from 'react-icons/wi';
 
 export default function SideBar(props) {
-    const {width, height, toggleTwitter, toggleMail, toggleQuote} = props;
+    const {width, height, toggleTwitter, toggleMail, toggleQuote, toggleWeather} = props;
     const [xPosition, setX] = React.useState(-width);
 
     const toggleMenu = () => {
@@ -41,6 +42,7 @@ export default function SideBar(props) {
                         transform: `translate(${width}px, 20vh)`
                     }}
                 ></button>
+                {/* Twitter section */}
                 <div className="content">
                     <button
                         onClick={toggleTwitter()}
@@ -49,6 +51,7 @@ export default function SideBar(props) {
                         <AiFillTwitterCircle/>
                     </button>
                 </div>
+                {/* Email section */}
                 <div className="content">
                     <button
                         onClick={toggleMail()}
@@ -57,12 +60,22 @@ export default function SideBar(props) {
                         <FiMail/>
                     </button>
                 </div>
+                {/* Quote section */}
                 <div className="content">
                     <button
                         onClick={toggleQuote()}
                         className="button"
                     >
                         <BsChatQuote/>
+                    </button>
+                </div>
+                {/* Weather section */}
+                <div className="content">
+                    <button
+                        onClick={toggleWeather()}
+                        className="button"
+                    >
+                        <WiCloudyWindy/>
                     </button>
                 </div>
             </div>

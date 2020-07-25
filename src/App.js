@@ -16,11 +16,13 @@ function App() {
         twitter: false,
         mail: false,
         quote: false,
+        weather: false,
         quoteX: 0,
         QuoteY: 0,
         quoteData: '',
         quoteAuthor: ''
     });
+    // Twitter section
     const toggleTwitter = () => error => {
         if(state.quote){
             setState({
@@ -35,6 +37,7 @@ function App() {
         }
         console.log("Clicked Twitter");
     };
+    // Email section
     const toggleMail = () => error => {
         if(state.quote){
             setState({
@@ -50,6 +53,7 @@ function App() {
         console.log("Clicked Mail");
 
     };
+    // Quote section
     const toggleQuote = ()  => error => {
         var temp = getQuote();
         console.log(temp);
@@ -75,6 +79,21 @@ function App() {
         }
         console.log("Clicked Quote");
     };
+    // Weather section
+    const toggleWeather = () => error => {
+        if(state.weather){
+            setState({
+                ...state,
+                weather: false
+            })
+        } else {
+            setState({
+                ...state,
+                weather: true
+            })
+        }
+        console.log("Clicked Weather");
+    };
   return (
     <div>
         <SideBar
@@ -83,6 +102,7 @@ function App() {
             toggleTwitter={toggleTwitter}
             toggleMail={toggleMail}
             toggleQuote={toggleQuote}
+            toggleWeather={toggleWeather}
         />
         <Draggable>
             <div className="Widget">
