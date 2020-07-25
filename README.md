@@ -7,7 +7,7 @@ Copyright © 2020 Michael Change, Jacob Crisan, Trevor Hensel, Shengjia He
 
 - [Jacob Crisan](mailto:jacob.crisan@gmail.com)
 - [Michael Change](mailto:micchang@pdx.edu)
-- Shengjia He
+- [Shengjia He](mailto:shengjia@pdx.edu)
 - [Trevor Hensel](mailto:hensel@pdx.edu)
 
 ## Tech stack
@@ -19,9 +19,9 @@ Deploy: Github Page
 
 In this project, we expect to build a web app of collecting some Google popular software into a website, which is easy for users to use Google software. 
 
-You can open [demo]() to look at the version of this project (Finish on the Week 3)
+You can open [demo](https://dash-dusky.vercel.app/) to look at the version of this project (Finish on the Week 3)
 
-You can open [MVP Version]() to look at the Minimum Viable Product version of this project (Finish on the Week 6)
+You can open [MVP Version](https://dash-dusky.vercel.app/) to look at the Minimum Viable Product version of this project (Finish on the Week 6)
 
 You can use the ['Githubpage']( https://psu-oss-group-personalorganizers.github.io/Dash/) to look at the web-app.
 
