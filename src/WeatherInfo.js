@@ -1,3 +1,8 @@
+// https://github.com/motdotla/dotenv
+// Use above link as an example to hide the API Key
+
+
+
 import React, { Component } from 'react'
 
 import Title from './Title'
