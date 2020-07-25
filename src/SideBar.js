@@ -7,7 +7,7 @@ import React from "react";
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { FiMail } from 'react-icons/fi';
 import { BsChatQuote } from 'react-icons/bs';
-import { WiCloudyWindy } from 'react-icons/wi';
+import { TiWeatherPartlySunny } from 'react-icons/ti';
 
 export default function SideBar(props) {
     const {width, height, toggleTwitter, toggleMail, toggleQuote, toggleWeather} = props;
@@ -75,7 +75,7 @@ export default function SideBar(props) {
                         onClick={toggleWeather()}
                         className="button"
                     >
-                        <WiCloudyWindy/>
+                        <TiWeatherPartlySunny/>
                     </button>
                 </div>
             </div>

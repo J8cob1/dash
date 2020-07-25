@@ -10,16 +10,19 @@
 import React from "react";
 import Draggable from "react-draggable";
 import "./App.css"
+import "./quotecss.css"
 
 export default function Quote(props){
     const {data, author} = props;
     return(
-        <Draggable>
-            <div className="Widget">
-                {data}
-                <br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;-{author}
-            </div>
-        </Draggable>
+        <div className = "quote">
+            <Draggable>
+                <div className="Widget">
+                    {data}
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;-{author}
+                </div>
+            </Draggable>
+        </div>
     );
 }

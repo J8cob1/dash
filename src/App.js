@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import CalendarWidget from './CalendarWidget';
 import SideBar from "./SideBar";
 import Quote from "./Quote";
+import Weather from "./Weather";
 import {getQuote} from "./QuoteAPI";
 
 import Draggable from "react-draggable";
@@ -110,11 +111,17 @@ function App() {
             </div>
         </Draggable>
 
+        {/* Quote section */}
         {state.quote &&
             <Quote
                 data={state.quoteData}
                 author={state.quoteAuthor}
             />
+        }
+
+        {/* Weather section */}
+        {state.weather &&
+            <Weather/>
         }
     </div>
   );
