@@ -3,15 +3,11 @@ import React, { Component } from 'react'
 import Title from './Title'
 import Form from './Form'
 import WeatherDetails from './WeatherDetails'
-import 'dotenv'
 
 require('dotenv').config()
 
-// db.connect({
-//   API_KEY: process.env.WEATHER_API_KEY
-// })
-
-const API_KEY = process.env.WEATHER_API_KEY;
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+console.log(process.env);
 
 class WeatherInfo extends Component {
     state = {
