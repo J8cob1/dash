@@ -7,7 +7,7 @@ Copyright © 2020 Michael Change, Jacob Crisan, Trevor Hensel, Shengjia He
 
 - Jacob Crisan
 - [Michael Change](mailto:micchang@pdx.edu)
-- [Shengjia He] (mailto:shengjia@pdx.edu)
+- [Shengjia He](mailto:shengjia@pdx.edu)
 - [Trevor Hensel](mailto:hensel@pdx.edu)
 
 ## Tech stack
