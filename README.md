@@ -39,6 +39,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### Setup
+
+In order to properly run the app, you will need to do some setup. 
+
+In order to get Google Login working, you will need to create a project in google cloud, enable the Calendar API and get an API key for it (see the quickstart guide: https://developers.google.com/calendar/quickstart/js - there are buttons to help you get this working quickly). After doing so, create an file called apiGoogleconfig.json in the root directory of the project with the following contents in it (see https://www.npmjs.com/package/react-google-calendar-api for more information):
+
+{
+  "clientId": "*google project client id*",
+  "apiKey": "*API key*",
+  "scope": "https://www.googleapis.com/auth/calendar",
+  "discoveryDocs": ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"]
+}
+
 ### `npm start`
 
 Runs the app in the development mode.<br />

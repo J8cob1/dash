@@ -1,7 +1,11 @@
 import React from 'react';
 import Calendar from 'react-calendar';
+import ApiCalendar from 'react-google-calendar-api';
+import Button from 'react-bootstrap/Button'
 import 'react-calendar/dist/Calendar.css';
 import "./cal.css";
+
+// Used react google login documentation: https://github.com/Kubessandra/react-google-calendar-api
 
 class CalendarWidget extends React.Component {
   // For scoping reasons
@@ -16,6 +20,7 @@ class CalendarWidget extends React.Component {
     // Set initial state
     this.state = {
       date: "",
+      isSignedIn: false,
       events: []
     };
 
@@ -27,6 +32,10 @@ class CalendarWidget extends React.Component {
   // To load the events for today by default
   componentDidMount() {
     this.getCalendarEvents(new Date());
+  }
+
+  handleSignIn() {
+    //if (this.state.isSignedIn)
   }
 
   getCalendarEvents(selectedDate) {
@@ -44,6 +53,7 @@ class CalendarWidget extends React.Component {
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString
     this.setState({
       date: selectedDate.toDateString(),
+      isSignedIn: false,
       events: calendarEvents
     });
   }
@@ -63,6 +73,11 @@ class CalendarWidget extends React.Component {
     // Create a placeholder item in case there are no events for the day
     let placeHolder = <div className="placeholder">No events for the day!</div>
 
+    // Login/Logout Things
+    let isSignedIn = this.state.isSignedIn;
+    let signInButton = <Button variant="primary">Sign In</Button>;
+    let signOutButton = <Button variant="secondary">Sign Out</Button>;
+
     return (
       <div className="calendar">
         <Calendar
@@ -76,6 +91,7 @@ class CalendarWidget extends React.Component {
           <div className="events">
             {(calendarEvents.length !== 0) ? calendarEvents : placeHolder}
           </div>
+          {isSignedIn ? signOutButton : signInButton}
         </div>
       </div>
     );
