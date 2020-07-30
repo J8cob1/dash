@@ -9,22 +9,35 @@
   align-items: center;
 }
 
-.events {
+.calendar-event-container {
   width: 100%;
 }
-.events div {
-  margin-top: 10px;
-  margin-bottom: 10px;
+.calendar-event-container div {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-.event-title {
+.calendar-event-container .date {
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+}
+.calendar-event-container hr {
+  background-color: black;
+}
+#calendar-event-create-button {
+  width: 100%;
+}
+
+.calendar-event {
+  margin-top: 20px;
+}
+.calendar-event-title {
   font-weight: bold; /* https://www.w3schools.com/cssref/pr_font_weight.asp maybe*/
   font-size: medium; /* Good reference I probalby didn't use because I learned about it earlier: https://www.w3schools.com/cssref/pr_font_font-size.asp */
 }
-.date {
-    padding: 5px;
-    text-align: center;
-    font-weight: bold;
-    font-size: large;
+.calendar-event-button {
+  margin-right: 10px;
 }
 
 .placeholder {

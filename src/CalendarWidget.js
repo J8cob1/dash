@@ -1,5 +1,6 @@
 import React from 'react';
 import Calendar from 'react-calendar';
+import Button from 'react-bootstrap/Button';
 import 'react-calendar/dist/Calendar.css';
 import "./cal.css";
 
@@ -53,9 +54,11 @@ class CalendarWidget extends React.Component {
     let calendarEvents = []
     this.state.events.forEach(event => {
       calendarEvents.push(
-        <div>
-          <div className="event-title">{event.title}</div>
-          <p className="event-description">{event.description}</p>
+        <div className="calendar-event">
+          <div className="calendar-event-title">{event.title}</div>
+          <p className="calendar-event-description">{event.description}</p>
+          <Button variant="info" className="calendar-event-button">Edit</Button>
+          <Button variant="danger" className="calendar-event-button">Delete</Button>
         </div>
       )
     })
@@ -69,12 +72,14 @@ class CalendarWidget extends React.Component {
           onChange={this.getCalendarEvents}
           defaultValue={new Date()}
         />
-        <div className="events">
+        <div className="calendar-event-container">
           <div className="date">
             {this.state.date}
           </div>
-          <div className="events">
+          <div>
             {(calendarEvents.length !== 0) ? calendarEvents : placeHolder}
+            <hr/>
+            <Button variant="success" id="calendar-event-create-button">Create Event</Button>
           </div>
         </div>
       </div>
@@ -93,8 +98,9 @@ export default CalendarWidget;
 // https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
 // https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-basics
 // https://developer.mozilla.org/en-US/docs/Web/CSS/font-size
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/* (* is supposed to represent the fact that I refernced mulsitple pages from the Date page, though I'm not sure I ended up using all of them)
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/* (* is supposed to represent the fact that I refernced multiple pages from the Date page, though I'm not sure I ended up using all of them)
 // https://stackoverflow.com/questions/26059762/callback-when-dom-is-loaded-in-react-js
 // This one for sure though: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString
 // Maybe this, but not really: https://stackoverflow.com/questions/3552461/how-to-format-a-javascript-date
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+// https://react-bootstrap.github.io/components/buttons/
