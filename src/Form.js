@@ -1,11 +1,18 @@
-import React, { Component } from 'react'
+// https://www.youtube.com/watch?v=204C9yNeOYI
+// Use this above link to do the Open Weather API as an example
+// To finish our project
 
+import React, { Component } from 'react'
 class Form extends Component {
     render() {
+        const cityStyle = {
+            fontFamily: "Cursive"
+        };
+
         return (
             <div>
                 <form onSubmit={this.props.getWeather}>
-                <select name="city">
+                <select name="city" style={cityStyle}>
                     <option value="Portland">Portland</option>
                     <option value="Seattle">Seattle</option>
                     <option value="San Francisco">San Francisco</option>
@@ -30,9 +37,9 @@ class Form extends Component {
                     <option value="New Orleans">New Orleans</option>
                     <option value="Indianapolis">Indianapolis</option>
                 </select>
-                    <button>
-                        Get Weather
-                    </button>
+                <button style={cityStyle}>
+                    Get Weather
+                </button>
                 </form>
             </div>
         )
