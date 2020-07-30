@@ -1,6 +1,7 @@
 import React from 'react';
 import Calendar from 'react-calendar';
 import Button from 'react-bootstrap/Button';
+import { loadAuth2, loadAuth2WithProps } from 'gapi-script'; // https://www.npmjs.com/package/gapi-script
 import 'react-calendar/dist/Calendar.css';
 import "./cal.css";
 
@@ -23,6 +24,8 @@ class CalendarWidget extends React.Component {
     // Bind this to the getCalendarEvents function
     // https://stackoverflow.com/questions/52894546/cannot-access-state-inside-function
     this.getCalendarEvents = this.getCalendarEvents.bind(this);
+
+
   }
 
   // To load the events for today by default
