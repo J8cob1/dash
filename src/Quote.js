@@ -11,18 +11,20 @@ import React from "react";
 import Draggable from "react-draggable";
 import "./App.css"
 import "./quotecss.css"
+import { Rnd } from 'react-rnd';
+
 
 export default function Quote(props){
     const {data, author} = props;
     return(
         <div className = "quote">
-            <Draggable>
+            <Rnd>
                 <div className="Widget">
                     {data}
                     <br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;-{author}
                 </div>
-            </Draggable>
+            </Rnd>
         </div>
     );
 }

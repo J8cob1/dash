@@ -4,50 +4,68 @@ import CalendarWidget from './CalendarWidget';
 import SideBar from "./SideBar";
 import Quote from "./Quote";
 import Weather from "./Weather";
-import {getQuote} from "./QuoteAPI";
 
 import Draggable from "react-draggable";
+import {getLocStorage, setLocStorage, quote, weather} from "./PersistantState";
 
 
+class App extends React.Component{
+    constructor() {
+        super();
+        this.state = {
+            width: 150,
+            height: 2,
+            twitter: false,
+            mail: false,
+            quote: false,
+            weather: false,
+            quoteX: 0,
+            QuoteY: 0,
+            quoteData: '',
+            quoteAuthor: ''
+        }
+        this.toggleQuote = this.toggleQuote.bind(this)
+        this.updateFromPersistant = this.updateFromPersistant.bind(this);
+    }
 
-function App() {
-    const [state, setState] = React.useState({
-        width: 150,
-        height: 2,
-        twitter: false,
-        mail: false,
-        quote: false,
-        weather: false,
-        quoteX: 0,
-        QuoteY: 0,
-        quoteData: '',
-        quoteAuthor: ''
-    });
+    componentDidMount() {
+        this.updateFromPersistant();
+    }
+
+    updateFromPersistant() {
+        let quoteData = getLocStorage(quote);
+        console.log("Quote data:", quoteData);
+        this.setState({
+            ...this.state,
+            quote: quoteData
+        });
+    }
+
     // Twitter section
-    const toggleTwitter = () => error => {
-        if(state.quote){
-            setState({
-                ...state,
+    toggleTwitter = () => error => {
+        if(this.state.quote){
+            this.setState({
+                ...this.state,
                 twitter: false
             })
         } else {
-            setState({
-                ...state,
+            this.setState({
+                ...this.state,
                 twitter: true
             })
         }
         console.log("Clicked Twitter");
     };
     // Email section
-    const toggleMail = () => error => {
-        if(state.quote){
-            setState({
-                ...state,
+    toggleMail = () => error => {
+        if(this.state.quote){
+            this.setState({
+                ...this.state,
                 mail: false
             })
         } else {
-            setState({
-                ...state,
+            this.setState({
+                ...this.state,
                 mail: true
             })
         }
@@ -55,76 +73,91 @@ function App() {
 
     };
     // Quote section
-    const toggleQuote = ()  => error => {
-        var temp = getQuote();
+    async toggleQuote () {
+        var temp = await fetch('http://quotes.rest/qod.json?category=inspire')
+        .then(function (res) {
+            return res.json();
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+
         console.log(temp);
-        var quoteString = temp[0];
-        var author = temp[1];
-        if(state.quoteData === ''){
-            setState({
-                ...state,
+        var quoteString = temp.contents.quotes[0].quote;
+        var author = temp.contents.quotes[0].author;
+        if(author === null){
+            author = "Unknown"
+        }
+        if(this.state.quoteData === ''){
+            this.setState({
+                ...this.state,
                 quoteData: quoteString,
                 quoteAuthor: author
             })
         }
-        if(state.quote){
-            setState({
-                ...state,
+        if(this.state.quote === true){
+            this.setState({
+                ...this.state,
                 quote: false
             });
+            setLocStorage(quote, false)
         } else {
-            setState({
-                ...state,
+            this.setState({
+                ...this.state,
                 quote: true
             });
+            setLocStorage(quote, true)
+
         }
         console.log("Clicked Quote");
     };
     // Weather section
-    const toggleWeather = () => error => {
-        if(state.weather){
-            setState({
-                ...state,
+    toggleWeather = () => error => {
+        if(this.state.weather){
+            this.setState({
+                ...this.state,
                 weather: false
             })
         } else {
-            setState({
-                ...state,
+            this.setState({
+                ...this.state,
                 weather: true
             })
         }
         console.log("Clicked Weather");
     };
-  return (
-    <div>
-        <SideBar
-            width={state.width}
-            height={state.height}
-            toggleTwitter={toggleTwitter}
-            toggleMail={toggleMail}
-            toggleQuote={toggleQuote}
-            toggleWeather={toggleWeather}
-        />
-        <Draggable>
-            <div className="Widget">
-                <CalendarWidget/>
-            </div>
-        </Draggable>
-
-        {/* Quote section */}
-        {state.quote &&
-            <Quote
-                data={state.quoteData}
-                author={state.quoteAuthor}
+    render(){
+      return (
+        <div>
+            <SideBar
+                width={this.state.width}
+                height={this.state.height}
+                toggleTwitter={this.toggleTwitter}
+                toggleMail={this.toggleMail}
+                toggleQuote={this.toggleQuote}
+                toggleWeather={this.toggleWeather}
             />
-        }
+            <Draggable>
+                <div className="Widget">
+                    <CalendarWidget/>
+                </div>
+            </Draggable>
 
-        {/* Weather section */}
-        {state.weather &&
-            <Weather/>
-        }
-    </div>
-  );
+            {/* Quote section */}
+            {this.state.quote &&
+                <Quote
+                    data={this.state.quoteData}
+                    author={this.state.quoteAuthor}
+                />
+            }
+
+            {/* Weather section */}
+            {this.state.weather &&
+                <Weather/>
+            }
+        </div>
+      );
+}
 }
 
 export default App;

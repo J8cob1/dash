@@ -36,7 +36,7 @@ export default function SideBar(props) {
                 }}
             >
                 <button
-                    onClick={() => toggleMenu()}
+                    onClick={() => toggleMenu}
                     className="toggle-menu"
                     style={{
                         transform: `translate(${width}px, 20vh)`
@@ -63,7 +63,7 @@ export default function SideBar(props) {
                 {/* Quote section */}
                 <div className="content">
                     <button
-                        onClick={toggleQuote()}
+                        onClick={toggleQuote}
                         className="button"
                     >
                         <BsChatQuote/>
