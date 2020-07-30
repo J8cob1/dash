@@ -1,7 +1,9 @@
 // https://github.com/motdotla/dotenv
 // Use above link as an example to hide the API Key
 
-
+// https://www.youtube.com/watch?v=204C9yNeOYI
+// Use this above link to do the Open Weather API as an example
+// To finish our project
 
 import React, { Component } from 'react'
 
