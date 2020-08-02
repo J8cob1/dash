@@ -1,0 +1,57 @@
+/* Calendar Styles */
+/* https://www.w3schools.com/cssref/css_selectors.asp */
+
+/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+/* https://www.w3schools.com/css/css3_flexbox.asp */
+.calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendar-event-container {
+  width: 100%;
+}
+.calendar-event-container div {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.calendar-event-container .date {
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+}
+.calendar-event-container hr {
+  background-color: black;
+}
+.full-width {
+  width: 100%;
+}
+
+.calendar-event {
+  margin-top: 20px;
+}
+.calendar-event-title {
+  font-weight: bold; /* https://www.w3schools.com/cssref/pr_font_weight.asp maybe*/
+  font-size: medium; /* Good reference I probalby didn't use because I learned about it earlier: https://www.w3schools.com/cssref/pr_font_font-size.asp */
+}
+.calendar-event-button {
+  margin-right: 10px;
+}
+
+.placeholder {
+  text-align: center;
+  font-style: italic; /* https://www.w3schools.com/cssref/pr_font_font-style.asp maybe */
+  font-size: medium;
+}
+
+.react-calendar {
+  width: 100%;
+}
+/* https://www.w3schools.com/cssref/sel_firstchild.asp */
+.react-calendar__month-view__days {
+  min-height: 400px;
+}
+
+/* Maybe used https://stackoverflow.com/questions/1260122/expand-a-div-to-fill-the-remaining-width ? */
