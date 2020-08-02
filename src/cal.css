@@ -53,3 +53,5 @@
 .react-calendar__month-view__days {
   min-height: 400px;
 }
+
+/* Maybe used https://stackoverflow.com/questions/1260122/expand-a-div-to-fill-the-remaining-width ? */

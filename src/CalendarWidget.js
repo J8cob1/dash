@@ -1,227 +1,139 @@
 import React from 'react';
 import Calendar from 'react-calendar';
 import Button from 'react-bootstrap/Button';
-//import { loadAuth2WithProps, gapi } from 'gapi-script'; // https://www.npmjs.com/package/gapi-script
 import 'react-calendar/dist/Calendar.css';
 import "./cal.css";
-import { BsShieldFill } from 'react-icons/bs';
-import { gapi, loadAuth2WithProps } from 'gapi-script';
-
-//import gapi from 'client.js';
-
-//let auth2 = await loadAuth2(process.env.REACT_GOOGLE_CLIENT_ID, None);
 
 class CalendarWidget extends React.Component {
-  // State
-  constructor() {
-    // Call parent constructor
-    super()
+    // State
+    constructor() {
+        // Call parent constructor
+        super()
 
-    // Set initial state
-    this.state = {
-      date: "",
-      gapiSetup: false,
-      events: []
-    };
+        // Set initial state
+        this.state = {
+            date: "",
+            events: []
+        };
 
-    // Scripts
-    //this.calendarAPI = null;
-
-    // Bind this to the getCalendarEvents function
-    // https://stackoverflow.com/questions/52894546/cannot-access-state-inside-function
-    this.getCalendarEvents = this.getCalendarEvents.bind(this);
-    this.setupLogin = this.setupLogin.bind(this);
-    this.signIn = this.signIn.bind(this);
-    this.signOut = this.signOut.bind(this);
-  }
-
-  // To load the events for today by default
-  async componentDidMount() {
-    this.setupLogin();
-    this.getCalendarEvents(new Date());
-  }
-
-  async setupLogin() {
-    // Gets 
-    let thisPointer = this;
-    //let gapiClient = await gapi;
-    //console.log(gapi);
-    
-    // Connect to Google project and do initial setup
-    // https://github.com/LucasAndrad/gapi-script-live-example/blob/master/src/components/GoogleLogin.js
-    // https://github.com/google/google-api-javascript-client/blob/master/docs/reference.md
-    // https://developers.google.com/identity/sign-in/web/reference
-    let loginAction = loadAuth2WithProps({
-      apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-      clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-      discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"], // Put discovery docs of Google APIs you want to use here
-      scope: "https://www.googleapis.com/auth/calendar"
-    }).then(() => {
-      // Update State To Reflct Setup Complete
-      thisPointer.setState({
-        date: thisPointer.state.date,
-        gapiSetup: true,
-        events: thisPointer.state.events
-      });
-      console.log("Google Setup Completed")
-      console.log(gapi);
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve ? 
-    }).then(() => {
-      console.log(gapi.client.calendar.calendarList.list().getPromise().then((result) => {
-        console.log(result);
-      }));
-    }).catch((error) => {
-      console.log("Google Setup Error: " + error);
-    });
-
-    //loginAction.
-    /*.then(() => {
-      thisPointer.setState({
-        date: thisPointer.state.date,
-        loginSetup: true,
-        events: thisPointer.state.events
-      });
-      //this.calendarAPI = gapi.client.calendar;
-      //console.log(this.calendarAPI);
-      //let calendarList = gapi.client.calendar.calendarList.list();
-      //console.log(calendarList);
-      //console.log(gapi.client.calendar.calendarList.list().getPromise().then((result) => {
-      //  console.log(result);
-      //}));
-    });*/
-    //console.log(loginAction);
-
-    /*let loginSetup = {
-      apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-      clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-      discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
-      scope: "https://www.googleapis.com/auth/calendar"
-    };*/
-
-    //console.log(gapi2);
-
-    //let auth2 = await loadAuth2WithProps(loginSetup);
-    //console.log(auth2.currentUser.get().getBasicProfile().getName());
-    //console.log(auth2);
-    //console.log(gapi.client.load("https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"));
-
-    /*thisPointer.setState({
-      date: thisPointer.state.date,
-      loginSetup: true,
-      "auth2": auth2,
-      events: thisPointer.state.events
-    });
-    //console.log(gapi);*/
-  }
-
-  getCalendarEvents(selectedDate) {
-    // Get calendar events for the selected day
-    // https://stackoverflow.com/questions/22876978/loop-inside-react-jsx?page=1&tab=votes#tab-top
-    if (this.state.gapiSetup === true && gapi.auth2.getAuthInstance().isSignedIn.get() === true) {
-      // Step 1: Get all the calendars
-      
-      let APICalendarEvents = ["sdf","sdf","324"]; // Temporary. Replace with calendar query script
-      let calendarEvents = []
-      APICalendarEvents.forEach(element => {
-        calendarEvents.push({title: "Event Title", description: "Event Description. Leedle leedle leedle leedle lee", index: calendarEvents.length})
-      });
-
-      // Update state
-      // https://reactjs.org/docs/state-and-lifecycle.html and/or https://reactjs.org/docs/faq-state.html?
-      // https://www.npmjs.com/package/react-calendar
-      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString
-      this.setState({
-        date: selectedDate.toDateString(),
-        loginSetup: this.loginSetup,
-        events: calendarEvents
-      });
-    }
-    else {
-      this.setState({
-        date: selectedDate.toDateString(),
-        loginSetup: this.loginSetup,
-        events: []
-      });
-    }
-  }
-
-  signIn() {
-    if (this.state.gapiSetup === true && gapi.auth2.getAuthInstance().isSignedIn.get() === false) {
-      gapi.auth2.getAuthInstance().signIn().then(() => {
-        this.forceUpdate(); // https://stackoverflow.com/questions/30626030/can-you-force-a-react-component-to-rerender-without-calling-setstate
-        this.getCalendarEvents();
-        this.forceUpdate();
-      });
-      //console.log("Signed In");
-    }
-  }
-  signOut() {
-    if (this.state.gapiSetup === true && gapi.auth2.getAuthInstance().isSignedIn.get() === true) {
-      gapi.auth2.getAuthInstance().signOut().then(() => {
-        this.forceUpdate();
-        this.getCalendarEvents();
-        this.forceUpdate(); // https://stackoverflow.com/questions/30626030/can-you-force-a-react-component-to-rerender-without-calling-setstate
-      });
-      //console.log("Signed Out");
-    }
-  }
-
-  render() {
-    // Sign in status
-    let isSignedIn = this.state.gapiSetup === true && gapi.auth2.getAuthInstance().isSignedIn.get() === true;
-
-    // Create a placeholder item in case there are no events for the day
-    let placeHolder = null;
-    if (!isSignedIn) {
-      placeHolder = <div className="placeholder">Please Sign In</div>
-    } else {
-      placeHolder = <div className="placeholder">No events for the day</div>
+        // https://stackoverflow.com/questions/52894546/cannot-access-state-inside-function
+        this.getCalendarEvents = this.getCalendarEvents.bind(this);
     }
 
-    // Get calendar events
-    let calendarEvents = []
-    this.state.events.forEach(event => {
-      calendarEvents.push(
-        <div className="calendar-event" key={event.index}>
-          <div className="calendar-event-title">{event.title}</div>
-          <p className="calendar-event-description">{event.description}</p>
-          <Button variant="info" className="calendar-event-button">Edit</Button>
-          <Button variant="danger" className="calendar-event-button">Delete</Button>
-        </div>
-      )
-    })
-
-    // Sign In / Sign Out button
-    let buttons = <Button variant="primary" className="full-width" onClick={this.signIn}>Sign In</Button>;
-    if (isSignedIn) {
-      buttons = <div>
-        <Button variant="success" className="full-width">Create Event</Button>
-        <Button variant="secondary" className="full-width" onClick={this.signOut}>Sign Out</Button>
-      </div>;
+    // To load the events for today by default
+    async componentDidMount() {
+        this.getCalendarEvents(new Date());
     }
 
-    return (
-      <div className="calendar">
-        <Calendar
-          onChange={this.getCalendarEvents}
-          defaultValue={new Date()}
-        />
-        <div className="calendar-event-container">
-          <div className="date">
-            {this.state.date}
-          </div>
-          <div>
-            {(calendarEvents.length !== 0) ? calendarEvents : placeHolder}
-            <hr/>
-            {buttons}
-          </div>
-        </div>
-      </div>
-    );
-  }
+    async getCalendarEvents(selectedDate) {
+        // https://developers.google.com/calendar/quickstart/js#step_2_set_up_the_sample
+        // https://developers.google.com/calendar/v3/reference/calendarList/list#php
+        // https://developers.google.com/calendar/v3/reference/calendarList/get
+        // https://reactjs.org/docs/state-and-lifecycle.html and/or https://reactjs.org/docs/faq-state.html?
+        // https://www.npmjs.com/package/react-calendar
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toDateString
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve
+        // https://stackoverflow.com/questions/8636617/how-to-get-start-and-end-of-day-in-javascript/8636674
+        // https://stackoverflow.com/questions/7244246/generate-an-rfc-3339-timestamp-similar-to-google-tasks-api
+        // https://stackoverflow.com/questions/7244246/generate-an-rfc-3339-timestamp-similar-to-google-tasks-api
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
 
+        // Get dates
+        let date = selectedDate.toDateString();
 
+        let eventStartDate = new Date(selectedDate);
+        eventStartDate.setHours(0,0,0,0); // https://stackoverflow.com/questions/8636617/how-to-get-start-and-end-of-day-in-javascript/8636674
+
+        let eventEndDate = new Date(selectedDate);
+        eventEndDate.setDate(eventEndDate.getDate() + 1); // https://stackoverflow.com/questions/563406/add-days-to-javascript-date
+        eventEndDate.setHours(0,0,0,0); // https://stackoverflow.com/questions/8636617/how-to-get-start-and-end-of-day-in-javascript/8636674 
+
+        // Get the sign in status
+        let isSignedIn = this.props.authenticationSetup === true && this.props.googleAPIObj.auth2.getAuthInstance().isSignedIn.get() === true;
+
+        // Clean out whatever was there before
+        this.setState({
+          "date": date,
+          events: []
+        });
+
+        // Get calendar events for the given day
+        // https://stackoverflow.com/questions/22876978/loop-inside-react-jsx?page=1&tab=votes#tab-top
+        if (isSignedIn) {
+            // Step 1: Get all the calendars
+            // https://developers.google.com/calendar/v3/reference/calendarList/list
+            let calendarList = await this.props.googleAPIObj.client.calendar.calendarList.list();
+            calendarList = calendarList.result.items;
+
+            // Step 2: Get all events for teh current days from each calendar
+            // Got a tip from someone
+            let counter = 0;
+            calendarList.forEach(entry => {
+                this.props.googleAPIObj.client.calendar.events.list({"calendarId": entry.id, "timeMax": eventEndDate.toISOString(), "timeMin": eventStartDate.toISOString()}).then((response) => {
+                  let events = response.result.items;
+                  events.forEach((event) => {
+                    // Update the state with the events... one by one. I hope there is a better way to do this
+                    this.setState ({
+                        "date": date,
+                        events: this.state.events.concat([{title: event.summary, description: event.description, index: counter}]) // https://www.w3schools.com/Jsref/jsref_concat_array.asp
+                    });
+                    counter += 1;
+                  });
+                })
+            });
+        }
+        else {
+            this.setState({
+              "date": date,
+              events: []
+            });
+        }
+    }
+
+    render() {
+        // Sign in status
+        let isSignedIn = this.props.authenticationSetup === true && this.props.googleAPIObj.auth2.getAuthInstance().isSignedIn.get() === true;
+
+        // Create a placeholder item in case there are no events for the day
+        let placeHolder = null;
+        if (isSignedIn) {
+            placeHolder = <div className="placeholder">No events for the day</div>
+        } else {
+            placeHolder = <div className="placeholder">Please Sign In</div>
+        }
+
+        // Get calendar events
+        let calendarEvents = []
+        this.state.events.forEach(event => {
+            calendarEvents.push(
+                <div className="calendar-event" key={event.index}>
+                    <div className="calendar-event-title">{event.title}</div>
+                    <p className="calendar-event-description">{event.description}</p>
+                    <Button variant="info" className="calendar-event-button">Edit</Button>
+                    <Button variant="danger" className="calendar-event-button">Delete</Button>
+                </div>
+            )
+        })
+
+        return (
+            <div className="calendar">
+                <Calendar
+                    onChange={this.getCalendarEvents}
+                    defaultValue={new Date()}
+                />
+                <div className="calendar-event-container">
+                    <div className="date">
+                        {this.state.date}
+                    </div>
+                    <div>
+                        {(calendarEvents.length !== 0) ? calendarEvents : placeHolder}
+                        <hr/>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default CalendarWidget;
@@ -243,8 +155,33 @@ export default CalendarWidget;
 // https://developers.google.com/calendar/quickstart/js
 // https://www.npmjs.com/package/gapi-script
 // https://www.valentinog.com/blog/await-react/
+// https://developers.google.com/identity/sign-in/web/reference
+// https://developers.google.com/calendar/v3/reference
+// https://developers.google.com/calendar/quickstart/js
+// https://developers.google.com/calendar/overview
+// https://developers.google.com/calendar/v3/reference/events
 
 // https://stackoverflow.com/questions/39089495/google-api-client-libraries-for-react-project-javascript-or-node-js
 // https://stackoverflow.com/questions/53147396/what-is-the-difference-between-the-two-google-js-clients-platform-js-vs-api-js#:~:text=1-,platform.,for%20JavaScript%20client%2Dapplication%20developers.
 // https://gist.github.com/mikecrittenden/
 // https://stackoverflow.com/questions/9121902/call-an-asynchronous-javascript-function-synchronously
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await
+// Eh. Not really: https://github.com/robsontenorio/vue-api-query/issues/48
+// https://stackoverflow.com/questions/39679505/using-await-outside-of-an-async-function
+// https://stackoverflow.com/questions/27715275/whats-the-difference-between-returning-value-or-promise-resolve-from-then
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
+// https://stackoverflow.com/questions/42701963/use-await-outside-async
+// https://www.valentinog.com/blog/await-react/
+// https://stackoverflow.com/questions/45285129/any-difference-between-await-promise-all-and-multiple-await
+
+// Probably not: https://developers.google.com/calendar/quickstart/nodejs
+// https://stackoverflow.com/questions/11607465/need-good-example-google-calendar-api-in-javascript
+// https://stackoverflow.com/questions/28262674/retrieve-google-calendar-events-using-api-v3-in-javascript
+// https://github.com/googleapis/google-api-nodejs-client
+// https://nextjs.org/docs/api-reference/next.config.js/environment-variables
+// https://www.npmjs.com/package/googleapis
+// https://developers.google.com/calendar/v3/reference/events/list
+// https://developers.google.com/calendar/v3/reference/calendars/get
+// https://stackoverflow.com/questions/27322837/how-can-i-show-a-list-of-all-available-calendars-using-google-calendar-api-v3
+// https://stackoverflow.com/questions/57466728/how-to-get-profile-data-from-gapi-in-react
+// Maybe not: https://stackoverflow.com/questions/43021/how-do-you-get-the-index-of-the-current-iteration-of-a-foreach-loop
