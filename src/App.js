@@ -8,6 +8,7 @@ import Weather from "./Weather";
 import Draggable from "react-draggable";
 import {getLocStorage, setLocStorage, quote, weather} from "./PersistantState";
 
+require('dotenv').config()
 
 class App extends React.Component{
     constructor() {

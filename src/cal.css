@@ -25,7 +25,7 @@
 .calendar-event-container hr {
   background-color: black;
 }
-#calendar-event-create-button {
+.full-width {
   width: 100%;
 }
 
