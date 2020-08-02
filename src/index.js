@@ -4,9 +4,6 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './styles.css';
-import Particles from 'react-particles-js';
-import SideBar from "./SideBar";
-
 
 ReactDOM.render(
     <React.StrictMode>
