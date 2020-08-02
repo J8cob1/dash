@@ -75,10 +75,8 @@ class App extends React.Component{
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve ? 
             }).catch((error) => {
-                if (typeof error !== "string")
-                    error = error.toString();
-                
                 console.log("Google Setup Error: " + error);
+                console.log(error)
             });
         });
     }
