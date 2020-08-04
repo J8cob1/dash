@@ -2,6 +2,7 @@ import React from 'react';
 import Calendar from 'react-calendar';
 import Button from 'react-bootstrap/Button';
 import 'react-calendar/dist/Calendar.css';
+import { Rnd } from 'react-rnd';
 import "./cal.css";
 
 class CalendarWidget extends React.Component {
@@ -117,7 +118,7 @@ class CalendarWidget extends React.Component {
         })
 
         return (
-            <div className="calendar">
+            <Rnd className="calendar Widget">
                 <Calendar
                     onChange={this.getCalendarEvents}
                     defaultValue={new Date()}
@@ -131,7 +132,7 @@ class CalendarWidget extends React.Component {
                         <hr/>
                     </div>
                 </div>
-            </div>
+            </Rnd>
         );
     }
 }

@@ -25,6 +25,7 @@ class App extends React.Component{
             height: 2,
             twitter: false,
             mail: false,
+            calendar: true,
             quote: false,
             weather: false,
             quoteX: 0,
@@ -34,6 +35,7 @@ class App extends React.Component{
             authenticationSetup: false,
         }
         this.toggleQuote = this.toggleQuote.bind(this)
+        this.toggleCalendar = this.toggleCalendar.bind(this)
         this.updateFromPersistant = this.updateFromPersistant.bind(this);
         this.setupLogin = this.setupLogin.bind(this); // https://stackoverflow.com/questions/52894546/cannot-access-state-inside-function
         this.signIn = this.signIn.bind(this);
@@ -127,6 +129,22 @@ class App extends React.Component{
         console.log("Clicked Mail");
 
     };
+    // Calendar section
+    toggleCalendar = () => error => {
+        if(this.state.calendar){
+            this.setState({
+                ...this.state,
+                calendar: false
+            })
+        } else {
+            this.setState({
+                ...this.state,
+                calendar: true
+            })
+        }
+        console.log("Clicked Calendar");
+
+    };
     // Quote section
     async toggleQuote () {
         var temp = await fetch('http://quotes.rest/qod.json?category=inspire')
@@ -197,16 +215,14 @@ class App extends React.Component{
                 toggleMail={this.toggleMail}
                 toggleQuote={this.toggleQuote}
                 toggleWeather={this.toggleWeather}
+                toggleCalendar={this.toggleCalendar}
             />
-            <Draggable>
-                <div className="Widget">
-                    <CalendarWidget
-                        googleAPIObj={gapi}
-                        authenticationSetup={this.state.authenticationSetup}
-                    />
-                </div>
-            </Draggable>
-
+            {this.state.calendar &&
+                <CalendarWidget
+                    googleAPIObj={gapi}
+                    authenticationSetup={this.state.authenticationSetup}
+                />
+            }
             {/* Quote section */}
             {this.state.quote &&
                 <Quote
