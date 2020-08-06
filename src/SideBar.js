@@ -36,7 +36,7 @@ export default function SideBar(props) {
                 }}
             >
                 <button
-                    onClick={() => toggleMenu}
+                    onClick={() => toggleMenu()}
                     className="toggle-menu"
                     style={{
                         transform: `translate(${width}px, 20vh)`

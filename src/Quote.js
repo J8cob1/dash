@@ -13,6 +13,10 @@ import "./App.css"
 import "./quotecss.css"
 import { Rnd } from 'react-rnd';
 
+const stylesCredit = {
+
+}
+
 
 export default function Quote(props){
     const {data, author} = props;
@@ -23,6 +27,13 @@ export default function Quote(props){
                     {data}
                     <br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;-{author}
+                    <br/>
+                    <span style={{zIndex: 50, fontSize: '0.9em', fontWeight: 'bold'}}>
+                          <img src={'https://theysaidso.com/branding/theysaidso.png'} style={{height:20, width:20}} alt='theysaidso.com'/>
+                          <a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style={{color: 'black', marginLeft: '4px', verticalAlign: 'middle'}}>
+                            They Said So®
+                          </a>
+                    </span>
                 </div>
             </Rnd>
         </div>
