@@ -1,4 +1,4 @@
-# helpful-organizers
+# Dash
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/psu-oss-group-personalOrganizers/helpful-organizers/blob/master/LICENSE)
 
 Copyright © 2020 Michael Change, Jacob Crisan, Trevor Hensel, Shengjia He
@@ -11,19 +11,19 @@ Copyright © 2020 Michael Change, Jacob Crisan, Trevor Hensel, Shengjia He
 - [Trevor Hensel](mailto:hensel@pdx.edu)
 
 ## Tech stack
-Fronted:
+Fronted: React.js
 
-Deploy: Github Page
+Demo Deployment: Vercel
 
 ## Project roadmap
 
 In this project, we expect to build a web app of collecting some Google popular software into a website, which is easy for users to use Google software. 
 
-You can open [demo](https://dash-dusky.vercel.app/) to look at the version of this project (Finish on the Week 3)
+You can open [demo](https://dash-dusky.vercel.app/) to look at the version of this project
 
 You can open [MVP Version](https://dash-dusky.vercel.app/) to look at the Minimum Viable Product version of this project (Finish on the Week 6)
 
-You can use the ['Githubpage']( https://psu-oss-group-personalorganizers.github.io/Dash/) to look at the web-app.
+You can use the ['Githubpage'](https://github.com/J8cob1/dash) to look at the code
 
 ## License
 
