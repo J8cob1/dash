@@ -48,8 +48,13 @@ class App extends React.Component{
     }
 
     updateFromPersistant() {
-        let quoteData = getLocStorage(quote);
+        let quoteData = (getLocStorage(quote) == 'true');
         console.log("Quote data:", quoteData);
+        if(true == quoteData){
+            console.log("it is literal");
+        } else if('true' == quoteData){
+            console.log("it is not");
+        }
         this.setState({
             ...this.state,
             quote: quoteData
