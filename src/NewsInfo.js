@@ -7,7 +7,6 @@
 
 
 import React, { Component } from 'react';
-import axios from 'axios';
 import "./NewsInfo.css"
 
 
@@ -38,18 +37,19 @@ class NewsInfo extends Component {
 
   getArticles() {
     const apiKey = process.env.REACT_APP_NEWS_API_KEY;
-    // Make HTTP reques with Axios
-    axios
-      .get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`)
-      .then(res => {
-        const articles = res.data.articles;
-        // Set state with result
-        console.log(articles);
-        this.setState({ articles: articles });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+    fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`).then(response => response.json()).then(data => {
+      // Get articles
+      const articles = data.articles;
+
+      // Set state with result
+      console.log(articles);
+      this.setState({ articles: articles });
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
 
   render() {
