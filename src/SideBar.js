@@ -8,10 +8,11 @@ import { AiFillTwitterCircle } from 'react-icons/ai';
 import { FiMail } from 'react-icons/fi';
 import { BsChatQuote } from 'react-icons/bs';
 import { TiWeatherPartlySunny } from 'react-icons/ti';
+import { FaRegNewspaper } from 'react-icons/fa';
 import { IoMdCalendar } from 'react-icons/io' //  https://github.com/react-icons/react-icons
 
 export default function SideBar(props) {
-    const {width, height, toggleTwitter, toggleMail, toggleQuote, toggleWeather, toggleCalendar} = props;
+    const {width, height, toggleTwitter, toggleMail, toggleQuote, toggleWeather, toggleCalendar, toggleNews} = props;
     const [xPosition, setX] = React.useState(-width);
 
     const toggleMenu = () => {
@@ -85,6 +86,15 @@ export default function SideBar(props) {
                         className="button"
                     >
                         <TiWeatherPartlySunny/>
+                    </button>
+                </div>
+                {/* News section */}
+                <div className="content">
+                    <button
+                        onClick={toggleNews()}
+                        className="button"
+                    >
+                        <FaRegNewspaper/>
                     </button>
                 </div>
             </div>
