@@ -7,12 +7,11 @@ import SideBar from "./SideBar";
 import Quote from "./Quote";
 import Weather from "./Weather";
 
-import Draggable from "react-draggable";
 import {getLocStorage, setLocStorage, quote, weather, cal, twitter, mail} from "./PersistantState";
 
 // https://stackoverflow.com/questions/51977448/how-to-use-gapi-in-react
 // https://www.npmjs.com/package/gapi-script
-import { gapi, loadAuth2WithProps } from 'gapi-script';
+import { gapi } from 'gapi-script';
 
 // https://stackoverflow.com/questions/49579028/adding-an-env-file-to-react-project
 require('dotenv').config()
@@ -76,13 +75,11 @@ class App extends React.Component{
                     ...this.state,
                     authenticationSetup: true,
                 });
-                this.forceUpdate();
                 console.log("Google Setup Completed")
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve ? 
             }).catch((error) => {
                 console.log("Google Setup Error: " + error);
-                console.log(error)
             });
         });
     }
@@ -90,14 +87,20 @@ class App extends React.Component{
     signIn() {
         if (this.state.authenticationSetup === true && gapi.auth2.getAuthInstance().isSignedIn.get() === false) {
             gapi.auth2.getAuthInstance().signIn().then(() => {
-                this.forceUpdate(); // https://stackoverflow.coms/questions/30626030/can-you-force-a-react-component-to-rerender-without-calling-setstate
+                this.setState({
+                    ...this.state,
+                    authenticationSetup: true
+                }); // https://www.educative.io/edpresso/how-to-force-a-react-component-to-re-render
             });
         }
     }
     signOut() {
         if (this.state.authenticationSetup === true && gapi.auth2.getAuthInstance().isSignedIn.get() === true) {
             gapi.auth2.getAuthInstance().signOut().then(() => {
-                this.forceUpdate(); // https://stackoverflow.com/questions/30626030/can-you-force-a-react-component-to-rerender-without-calling-setstate
+                this.setState({
+                    ...this.state,
+                    authenticationSetup: true
+                }); // https://www.educative.io/edpresso/how-to-force-a-react-component-to-re-render
             });
         }
     }
@@ -270,7 +273,7 @@ export default App;
 // https://www.npmjs.com/package/gapi-script?activeTab=readme
 // Maybe used?: https://stackoverflow.com/questions/7130648/get-user-info-via-google-api
 // Maybe used?: https://gist.github.com/skycocker/ba67e6756131fb43cf4963e024158be1
-// Maybe? https://reactjs.org/docs/react-component.html
+// https://reactjs.org/docs/react-component.html
 // Maybe: https://medium.com/better-programming/4-ways-of-adding-external-js-files-in-reactjs-823f85de3668
 // https://stackoverflow.com/questions/41738421/how-react-js-index-js-file-contacting-index-html-for-id-references
 // https://stackoverflow.com/questions/34424845/adding-script-tag-to-react-jsx
@@ -288,4 +291,6 @@ export default App;
 // https://stackoverflow.com/questions/48378337/create-react-app-not-picking-up-env-files
 // https://stackoverflow.com/questions/34810776/google-authentication-error-invalid-request-missing-required-parameter-client
 // https://github.com/google/google-api-javascript-client/issues/374
-// ... Probably not: https://www.npmjs.com/package/gapi
+// ... Probably not: https://www.npmjs.com/package/gapi and https://stackoverflow.com/questions/30034265/trigger-child-re-rendering-in-react-js and https://www.educative.io/edpresso/how-to-force-a-react-component-to-re-render
+// https://stackoverflow.com/questions/30626030/can-you-force-a-react-component-to-rerender-without-calling-setstate
+// https://stackoverflow.com/questions/51480968/es6-javascript-promise-execute-after-then-is-called
