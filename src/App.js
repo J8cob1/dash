@@ -8,7 +8,7 @@ import Quote from "./Quote";
 import Weather from "./Weather";
 
 import Draggable from "react-draggable";
-import {getLocStorage, setLocStorage, quote, weather} from "./PersistantState";
+import {getLocStorage, setLocStorage, quote, weather, cal, twitter, mail} from "./PersistantState";
 
 // https://stackoverflow.com/questions/51977448/how-to-use-gapi-in-react
 // https://www.npmjs.com/package/gapi-script
@@ -49,16 +49,15 @@ class App extends React.Component{
 
     updateFromPersistant() {
         let quoteData = (getLocStorage(quote) == 'true');
-        console.log("Quote data:", quoteData);
-        if(true == quoteData){
-            console.log("it is literal");
-        } else if('true' == quoteData){
-            console.log("it is not");
-        }
+        let weatherData = (getLocStorage(weather) == 'true');
+        let calData = (getLocStorage(cal) == 'true');
         this.setState({
             ...this.state,
-            quote: quoteData
+            quote: quoteData,
+            weather: weatherData,
+            calendar: calData
         });
+        this.updateQuote();
     }
 
     async setupLogin() {
@@ -110,11 +109,15 @@ class App extends React.Component{
                 ...this.state,
                 twitter: false
             })
+            setLocStorage(twitter, false)
+
         } else {
             this.setState({
                 ...this.state,
                 twitter: true
             })
+            setLocStorage(twitter, true)
+
         }
         console.log("Clicked Twitter");
     };
@@ -125,11 +128,15 @@ class App extends React.Component{
                 ...this.state,
                 mail: false
             })
+            setLocStorage(mail, false)
+
         } else {
             this.setState({
                 ...this.state,
                 mail: true
             })
+            setLocStorage(mail, true)
+
         }
         console.log("Clicked Mail");
 
@@ -141,39 +148,23 @@ class App extends React.Component{
                 ...this.state,
                 calendar: false
             })
+            setLocStorage(cal, false)
+
         } else {
             this.setState({
                 ...this.state,
                 calendar: true
             })
+            setLocStorage(cal, true)
+
         }
         console.log("Clicked Calendar");
 
     };
     // Quote section
-    async toggleQuote () {
-        var temp = await fetch('http://quotes.rest/qod.json?category=inspire')
-        .then(function (res) {
-            return res.json();
-        })
-        .catch(function(err){
-            console.log(err);
-        });
-
-        console.log(temp);
-        var quoteString = temp.contents.quotes[0].quote;
-        var author = temp.contents.quotes[0].author;
-        if(author === null){
-            author = "Unknown"
-        }
-        if(this.state.quoteData === ''){
-            this.setState({
-                ...this.state,
-                quoteData: quoteString,
-                quoteAuthor: author
-            })
-        }
-        if(this.state.quote === true){
+    toggleQuote () {
+        this.updateQuote();
+        if(this.state.quote){
             this.setState({
                 ...this.state,
                 quote: false
@@ -196,14 +187,42 @@ class App extends React.Component{
                 ...this.state,
                 weather: false
             })
+            setLocStorage(weather, false)
+
         } else {
             this.setState({
                 ...this.state,
                 weather: true
             })
+            setLocStorage(weather, true)
+
         }
         console.log("Clicked Weather");
     };
+
+    async updateQuote () {
+        if(this.state.quoteData === ''){
+            var temp = await fetch('http://quotes.rest/qod.json?category=inspire')
+                .then(function (res) {
+                    return res.json();
+                })
+                .catch(function(err){
+                    console.log(err);
+                });
+
+            console.log(temp);
+            var quoteString = temp.contents.quotes[0].quote;
+            var author = temp.contents.quotes[0].author;
+            if(author === null){
+                author = "Unknown"
+            }
+            this.setState({
+                ...this.state,
+                quoteData: quoteString,
+                quoteAuthor: author
+            })
+        }
+    }
     render(){
       return (
         <div>

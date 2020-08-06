@@ -5,6 +5,9 @@
 //[task, command]
 const quote = ["QuoteOfTheDay", false];
 const weather = ["Weather", false];
+const cal = ["Calendar", false];
+const twitter = ["twitter", false];
+const mail = ["mail", false];
 
 //retreive current options for a specific task
 function getLocStorage(toRetreive) {
@@ -24,4 +27,4 @@ function setLocStorage(toSet, data) {
 }
 
 //export constants for other functions to be able to access the options
-export {getLocStorage, setLocStorage, quote, weather};
+export {getLocStorage, setLocStorage, quote, weather, cal, twitter, mail};
