@@ -205,7 +205,7 @@ class App extends React.Component{
 
     async updateQuote () {
         if(this.state.quoteData === ''){
-            var temp = await fetch('http://quotes.rest/qod.json?category=inspire')
+            var temp = await fetch('https://quotes.rest/qod.json?category=inspire')
                 .then(function (res) {
                     return res.json();
                 })
