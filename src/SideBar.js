@@ -8,9 +8,10 @@ import { AiFillTwitterCircle } from 'react-icons/ai';
 import { FiMail } from 'react-icons/fi';
 import { BsChatQuote } from 'react-icons/bs';
 import { TiWeatherPartlySunny } from 'react-icons/ti';
+import { IoMdCalendar } from 'react-icons/io' //  https://github.com/react-icons/react-icons
 
 export default function SideBar(props) {
-    const {width, height, toggleTwitter, toggleMail, toggleQuote, toggleWeather} = props;
+    const {width, height, toggleTwitter, toggleMail, toggleQuote, toggleWeather, toggleCalendar} = props;
     const [xPosition, setX] = React.useState(-width);
 
     const toggleMenu = () => {
@@ -58,6 +59,14 @@ export default function SideBar(props) {
                         className="button"
                     >
                         <FiMail/>
+                    </button>
+                </div>
+                <div className="content">
+                    <button
+                        onClick={toggleCalendar()}
+                        className="button"
+                    >
+                    <IoMdCalendar/>
                     </button>
                 </div>
                 {/* Quote section */}
