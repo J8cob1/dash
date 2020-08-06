@@ -6,6 +6,7 @@ import CalendarWidget from './CalendarWidget';
 import SideBar from "./SideBar";
 import Quote from "./Quote";
 import Weather from "./Weather";
+import News from './News';
 
 import {getLocStorage, setLocStorage, quote, weather, cal, twitter, mail} from "./PersistantState";
 
@@ -27,6 +28,7 @@ class App extends React.Component{
             calendar: true,
             quote: false,
             weather: false,
+            news: false,
             quoteX: 0,
             QuoteY: 0,
             quoteData: '',
@@ -226,6 +228,21 @@ class App extends React.Component{
             })
         }
     }
+    // News section
+    toggleNews = () => error => {
+        if(this.state.news){
+            this.setState({
+                ...this.state,
+                news: false
+            })
+        } else {
+            this.setState({
+                ...this.state,
+                news: true
+            })
+        }
+        console.log("Clicked News");
+    };
     render(){
       return (
         <div>
@@ -242,6 +259,7 @@ class App extends React.Component{
                 toggleMail={this.toggleMail}
                 toggleQuote={this.toggleQuote}
                 toggleWeather={this.toggleWeather}
+                toggleNews={this.toggleNews}
                 toggleCalendar={this.toggleCalendar}
             />
             {this.state.calendar &&
@@ -261,6 +279,10 @@ class App extends React.Component{
             {/* Weather section */}
             {this.state.weather &&
                 <Weather/>
+            }
+            {/* News section */}
+            {this.state.news &&
+                <News/>
             }
             <Footer/>
         </div>
