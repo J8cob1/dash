@@ -13,7 +13,7 @@ class CalendarWidget extends React.Component {
 
         // Set initial state
         this.state = {
-            date: "",
+            date: new Date().toISOString(),
             events: []
         };
 
@@ -21,9 +21,12 @@ class CalendarWidget extends React.Component {
         this.getCalendarEvents = this.getCalendarEvents.bind(this);
     }
 
-    // To load the events for today by default
-    async componentDidMount() {
-        this.getCalendarEvents(new Date());
+    // Updates an object whenever the props change
+    async componentDidUpdate(oldProps) {
+      // https://stackoverflow.com/questions/37009328/re-render-react-component-when-prop-changes
+      if (this.props !== oldProps) {
+        this.getCalendarEvents(new Date(this.state.date));
+      }
     }
 
     async getCalendarEvents(selectedDate) {
@@ -185,4 +188,10 @@ export default CalendarWidget;
 // https://developers.google.com/calendar/v3/reference/calendars/get
 // https://stackoverflow.com/questions/27322837/how-can-i-show-a-list-of-all-available-calendars-using-google-calendar-api-v3
 // https://stackoverflow.com/questions/57466728/how-to-get-profile-data-from-gapi-in-react
-// Maybe not: https://stackoverflow.com/questions/43021/how-do-you-get-the-index-of-the-current-iteration-of-a-foreach-loop
+// Maybe not: https://stackoverflow.com/questions/43021/how-do-you-get-the-index-of-the-current-iteration-of-a-foreach-loop and https://stackoverflow.com/questions/1068834/object-comparison-in-javascript
+// https://reactjs.org/docs/react-component.html
+// https://stackoverflow.com/questions/30626030/can-you-force-a-react-component-to-rerender-without-calling-setstate
+// https://www.educative.io/edpresso/how-to-force-a-react-component-to-re-render
+// Not really used: https://stackoverflow.com/questions/36270422/reactjs-settimeout-not-working
+// https://www.w3schools.com/jsref/met_win_settimeout.asp
+// Maybe not: https://stackoverflow.com/questions/51741828/need-to-execute-function-before-render-in-reactjs
