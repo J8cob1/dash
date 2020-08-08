@@ -16,7 +16,7 @@ Used as reference */
 	flex: 1;
 }
 
-.author {
+.source {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
@@ -27,7 +27,7 @@ Used as reference */
 	padding-top: 0;
 	width: 58%;
     padding: 5px;
-    font-size: 10%
+    font-size: 80%
 }
 
 .card {

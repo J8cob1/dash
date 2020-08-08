@@ -5,6 +5,10 @@
 //https://github.com/alemesa/news-api-react/blob/master/src/Display.js
 //Used as reference
 
+//GNews api documentation:
+//https://gnews.io/docs/v3?javascript#introduction
+//Used as reference
+
 
 import React, { Component } from 'react';
 import axios from 'axios';
@@ -32,23 +36,21 @@ class NewsInfo extends Component {
     var hour = time.getHours();
     var minute = time.getMinutes();
     var month = time.getMonth() + 1;
-    var composedTime = day + '/' + month + '/' + year + ' | ' + hour + ':' + (minute < 10 ? '0' + minute : minute);
+    var composedTime = year + '/' + month + '/' + day + ' | ' + hour + ':' + (minute < 10 ? '0' + minute : minute);
     return composedTime;
   }
 
   getArticles() {
     const apiKey = process.env.REACT_APP_NEWS_API_KEY;
-    // Make HTTP reques with Axios
-    axios
-      .get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`)
-      .then(res => {
-        const articles = res.data.articles;
-        // Set state with result
-        console.log(articles);
-        this.setState({ articles: articles });
+
+    fetch(`https://gnews.io/api/v3/search?q=example&token=${apiKey}`)
+      .then(function (response) {
+          return response.json();
       })
-      .catch(error => {
-        console.log(error);
+      .then(data => {
+          const articles = data.articles;
+          console.log(articles);
+          this.setState({ articles: articles });
       });
   }
 
@@ -64,14 +66,16 @@ class NewsInfo extends Component {
                   <a href={news.url} target="_blank" rel="noopener noreferrer">
                     {news.title}
                   </a>
+                  <p>
                   {news.description}
-                <div className="author">
-                    By <i>{news.author ? news.author : this.props.default}</i>
+                  </p>
+                <div className="source">
+                    From <a href={news.source.url} target="_blank" rel="noopener noreferrer">{news.source.name}</a>
                     {this.formatDate(news.publishedAt)}
                 </div>
               </div>
               <div className="image">
-                <img src={news.urlToImage} alt="" />
+                <img src={news.image} alt="" />
               </div>
             </div>
           );
