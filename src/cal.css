@@ -2,8 +2,11 @@
 /* https://www.w3schools.com/cssref/css_selectors.asp */
 
 /* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+/* https://css-tricks.com/flex-grow-is-weird/ */
 /* https://www.w3schools.com/css/css3_flexbox.asp */
+
 .calendar {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +15,7 @@
 
 .calendar-event-container {
   width: 100%;
+  overflow-y: auto; /* https://stackoverflow.com/questions/21227287/make-div-scrollable */
 }
 .calendar-event-container div {
   margin-top: 5px;
