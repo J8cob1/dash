@@ -114,25 +114,24 @@ class CalendarWidget extends React.Component {
                 <div className="calendar-event" key={event.index}>
                     <div className="calendar-event-title">{event.title}</div>
                     <p className="calendar-event-description">{event.description}</p>
-                    <Button variant="info" className="calendar-event-button">Edit</Button>
-                    <Button variant="danger" className="calendar-event-button">Delete</Button>
                 </div>
             )
         })
 
         return (
-            <Rnd className="calendar Widget">
-                <Calendar
-                    onChange={this.getCalendarEvents}
-                    defaultValue={new Date()}
-                />
-                <div className="calendar-event-container">
-                    <div className="date">
-                        {this.state.date}
-                    </div>
-                    <div>
-                        {(calendarEvents.length !== 0) ? calendarEvents : placeHolder}
-                        <hr/>
+            <Rnd className="Widget">
+                <div className="calendar">
+                    <Calendar
+                        onChange={this.getCalendarEvents}
+                        defaultValue={new Date()}
+                    />
+                    <div className="calendar-event-container">
+                        <div className="date">
+                            {this.state.date}
+                        </div>
+                        <div>
+                            {(calendarEvents.length !== 0) ? calendarEvents : placeHolder}
+                        </div>
                     </div>
                 </div>
             </Rnd>
