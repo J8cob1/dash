@@ -3,12 +3,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 import Topbar from './Topbar';
 import Footer from './Footer';
 import CalendarWidget from './CalendarWidget';
+import EmailWidget from "./EmailWidget";
 import SideBar from "./SideBar";
 import Quote from "./Quote";
 import Weather from "./Weather";
 import News from './News';
 
-import {getLocStorage, setLocStorage, quote, weather, cal, twitter, mail} from "./PersistantState";
+import {getLocStorage, setLocStorage, quote, weather, cal, twitter, mail, news} from "./PersistantState";
 
 // https://stackoverflow.com/questions/51977448/how-to-use-gapi-in-react
 // https://www.npmjs.com/package/gapi-script
@@ -52,11 +53,15 @@ class App extends React.Component{
         let quoteData = (getLocStorage(quote) == 'true');
         let weatherData = (getLocStorage(weather) == 'true');
         let calData = (getLocStorage(cal) == 'true');
+        let mailData = (getLocStorage(mail) == 'true');
+        let newsData = (getLocStorage(news) == 'true');
         this.setState({
             ...this.state,
             quote: quoteData,
             weather: weatherData,
-            calendar: calData
+            calendar: calData,
+            mail: mailData,
+            news: newsData
         });
         this.updateQuote();
     }
@@ -66,12 +71,16 @@ class App extends React.Component{
         // https://github.com/LucasAndrad/gapi-script-live-example/blob/master/src/components/GoogleLogin.js
         // https://github.com/google/google-api-javascript-client/blob/master/docs/reference.md
         // https://developers.google.com/identity/sign-in/web/reference
+        // https://developers.google.com/gmail/api/quickstart/js
         gapi.load('client:auth2', () => { // https://stackoverflow.com/questions/52894546/cannot-access-state-inside-function
             gapi.client.init({
                 apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
                 clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-                discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"], // Put discovery docs of Google APIs you want to use here
-                scope: "https://www.googleapis.com/auth/calendar"
+                discoveryDocs: [
+                    "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
+                    "https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest"
+                ], // Put discovery docs of Google APIs you want to use here
+                scope: "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/gmail.readonly"
             }).then(() => {
                 this.setState({
                     ...this.state,
@@ -128,7 +137,7 @@ class App extends React.Component{
     };
     // Email section
     toggleMail = () => error => {
-        if(this.state.quote){
+        if(this.state.mail){
             this.setState({
                 ...this.state,
                 mail: false
@@ -235,11 +244,13 @@ class App extends React.Component{
                 ...this.state,
                 news: false
             })
+            setLocStorage(news, false)
         } else {
             this.setState({
                 ...this.state,
                 news: true
             })
+            setLocStorage(news, true)
         }
         console.log("Clicked News");
     };
@@ -264,6 +275,12 @@ class App extends React.Component{
             />
             {this.state.calendar &&
                 <CalendarWidget
+                    googleAPIObj={gapi}
+                    authenticationSetup={this.state.authenticationSetup}
+                />
+            }
+            {this.state.mail &&
+                <EmailWidget
                     googleAPIObj={gapi}
                     authenticationSetup={this.state.authenticationSetup}
                 />
