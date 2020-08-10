@@ -9,7 +9,7 @@ import Quote from "./Quote";
 import Weather from "./Weather";
 import News from './News';
 
-import {getLocStorage, setLocStorage, quote, weather, cal, twitter, mail} from "./PersistantState";
+import {getLocStorage, setLocStorage, quote, weather, cal, twitter, mail, news} from "./PersistantState";
 
 // https://stackoverflow.com/questions/51977448/how-to-use-gapi-in-react
 // https://www.npmjs.com/package/gapi-script
@@ -53,11 +53,15 @@ class App extends React.Component{
         let quoteData = (getLocStorage(quote) == 'true');
         let weatherData = (getLocStorage(weather) == 'true');
         let calData = (getLocStorage(cal) == 'true');
+        let mailData = (getLocStorage(mail) == 'true');
+        let newsData = (getLocStorage(news) == 'true');
         this.setState({
             ...this.state,
             quote: quoteData,
             weather: weatherData,
-            calendar: calData
+            calendar: calData,
+            mail: mailData,
+            news: newsData
         });
         this.updateQuote();
     }
@@ -133,7 +137,7 @@ class App extends React.Component{
     };
     // Email section
     toggleMail = () => error => {
-        if(this.state.quote){
+        if(this.state.mail){
             this.setState({
                 ...this.state,
                 mail: false
@@ -240,11 +244,13 @@ class App extends React.Component{
                 ...this.state,
                 news: false
             })
+            setLocStorage(news, false)
         } else {
             this.setState({
                 ...this.state,
                 news: true
             })
+            setLocStorage(news, true)
         }
         console.log("Clicked News");
     };
