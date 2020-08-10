@@ -1,0 +1,18 @@
+/* Email Widget Styles */
+h1 {
+  text-align: center;
+}
+.email-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto; /* https://stackoverflow.com/questions/21227287/make-div-scrollable */
+}
+form div, form select, form button {
+  margin: 10px;
+}
+
+form select {
+  border-right: 10px solid black;
+}

@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import Topbar from './Topbar';
 import Footer from './Footer';
 import CalendarWidget from './CalendarWidget';
+import EmailWidget from "./EmailWidget";
 import SideBar from "./SideBar";
 import Quote from "./Quote";
 import Weather from "./Weather";
@@ -66,12 +67,16 @@ class App extends React.Component{
         // https://github.com/LucasAndrad/gapi-script-live-example/blob/master/src/components/GoogleLogin.js
         // https://github.com/google/google-api-javascript-client/blob/master/docs/reference.md
         // https://developers.google.com/identity/sign-in/web/reference
+        // https://developers.google.com/gmail/api/quickstart/js
         gapi.load('client:auth2', () => { // https://stackoverflow.com/questions/52894546/cannot-access-state-inside-function
             gapi.client.init({
                 apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
                 clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-                discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"], // Put discovery docs of Google APIs you want to use here
-                scope: "https://www.googleapis.com/auth/calendar"
+                discoveryDocs: [
+                    "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
+                    "https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest"
+                ], // Put discovery docs of Google APIs you want to use here
+                scope: "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/gmail.readonly"
             }).then(() => {
                 this.setState({
                     ...this.state,
@@ -264,6 +269,12 @@ class App extends React.Component{
             />
             {this.state.calendar &&
                 <CalendarWidget
+                    googleAPIObj={gapi}
+                    authenticationSetup={this.state.authenticationSetup}
+                />
+            }
+            {this.state.mail &&
+                <EmailWidget
                     googleAPIObj={gapi}
                     authenticationSetup={this.state.authenticationSetup}
                 />
