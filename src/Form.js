@@ -8,7 +8,6 @@ class Form extends Component {
         const cityStyle = {
             fontFamily: "Cursive"
         };
-
         return (
             <div>
                 <form onSubmit={this.props.getWeather}>
