@@ -13,7 +13,7 @@ export default function Weather(props){
         <Rnd
             minWidth= {400}
             minHeight= {400}
-            className="WeatherWidget"
+            className="Widget"
             default={{
                 x: -100,
                 y: 300,
