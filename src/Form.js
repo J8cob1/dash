@@ -22,6 +22,7 @@ class Form extends Component {
                     <option value="Detroit">Detroit</option>
                     <option value="Washington D.C.">Washington D.C.</option>
                 </select>
+                
                 <button style={cityStyle}>
                     Getting Weather
                 </button>
