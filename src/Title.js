@@ -12,8 +12,8 @@ class Title extends Component {
 
         return (
             <div>
-                <h1 style={cityStyle}>Weather Finder</h1>
-                <p style={cityStyle}>Find out temperature, conditions and more ...</p>
+                <h1 style={cityStyle}>Weather Report</h1>
+                <p style={cityStyle}>Find out temperature ...</p>
             </div>
         )
     }
