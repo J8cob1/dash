@@ -7,7 +7,7 @@ import EmailWidget from "./EmailWidget";
 import SideBar from "./SideBar";
 import Quote from "./Quote";
 import Weather from "./Weather";
-import News from './News';
+import News from './NewsWidget';
 
 import {getLocStorage, setLocStorage, quote, weather, cal, twitter, mail, news} from "./PersistantState";
 

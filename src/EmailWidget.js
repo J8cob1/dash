@@ -186,7 +186,16 @@ class EmailWidget extends React.Component {
         })
 
         return (
-            <Rnd className="Widget">
+            <Rnd
+                minWidth= {700}
+                minHeight= {300}
+                className="Widget"
+                default={{
+                    width: 700,
+                    height:300,
+                    x: -100,
+                    y: 300,
+                }}>
                 <div className="email-container">
                     <h2>Emails</h2>
                     <div>
