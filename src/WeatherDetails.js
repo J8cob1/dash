@@ -5,8 +5,12 @@
 import React, { Component } from 'react'
 class WeatherDetails extends Component {
     render() {
+        const cityStyle = {
+            fontFamily: "Cursive"
+        };
+
         return (
-            <div>
+            <div style={cityStyle}>
                 {this.props.city && this.props.country && <p>Location: {this.props.city}, US</p>}
 
                 {this.props.temperature && <p>Temperature: {this.props.temperature} &deg;C </p>}
