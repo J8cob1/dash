@@ -1,4 +1,5 @@
 // https://react-bootstrap.github.io/components/navbar/
+// https://github.com/react-bootstrap/react-bootstrap
 // Get the example from the above link
 
 import React, { Component } from 'react'
@@ -26,7 +27,7 @@ class TestTopbar extends Component {
         return (
             <div>
                 <Navbar bg="dark" expand="lg" variant="dark" fixed="top">
-                    <Navbar.Brand href="#home">Personal Organizer</Navbar.Brand>
+                    <Navbar.Brand href="#home">Dash</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">                               
                             <div className="colorStyle centered">
