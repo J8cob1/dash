@@ -309,6 +309,7 @@ class App extends React.Component{
 
 export default App;
 
+// Other Sources/References (some may already be cited)
 // https://www.npmjs.com/package/gapi-script?activeTab=readme
 // Maybe used?: https://stackoverflow.com/questions/7130648/get-user-info-via-google-api
 // Maybe used?: https://gist.github.com/skycocker/ba67e6756131fb43cf4963e024158be1
