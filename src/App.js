@@ -50,11 +50,11 @@ class App extends React.Component{
     }
 
     updateFromPersistant() {
-        let quoteData = (getLocStorage(quote) == 'true');
-        let weatherData = (getLocStorage(weather) == 'true');
-        let calData = (getLocStorage(cal) == 'true');
-        let mailData = (getLocStorage(mail) == 'true');
-        let newsData = (getLocStorage(news) == 'true');
+        let quoteData = (getLocStorage(quote) === 'true');
+        let weatherData = (getLocStorage(weather) === 'true');
+        let calData = (getLocStorage(cal) === 'true');
+        let mailData = (getLocStorage(mail) === 'true');
+        let newsData = (getLocStorage(news) === 'true');
         this.setState({
             ...this.state,
             quote: quoteData,
