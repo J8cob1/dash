@@ -2,7 +2,7 @@
 // Use above link as an example to hide the API Key
 
 // https://www.youtube.com/watch?v=204C9yNeOYI
-// Use this above link to do the Open Weather API as an example
+// Use this above link to lean how to call the Open Weather API as an example
 // To finish our project
 
 // https://openweathermap.org/current
@@ -54,8 +54,8 @@ class WeatherInfo extends Component {
       return (
           <div>
               <WeatherTitle/>
-                  <WeatherForm getWeather={this.getWeather}/>
-                  <WeatherDetails
+                <WeatherForm getWeather={this.getWeather}/>
+                <WeatherDetails
                   temperature={this.state.temperature}
                   city={this.state.city}
                   country={this.state.country}
@@ -64,7 +64,7 @@ class WeatherInfo extends Component {
                   speed={this.state.speed}
                   sunrise={this.state.sunrise}
                   description={this.state.description}
-              />
+                />
           </div>
       )
   }
