@@ -6,7 +6,7 @@
 // To finish our project
 
 // https://openweathermap.org/current
-// Use open weather documents to get some data what we want
+// Lean from open weather documents how to get some data what we want
 
 import React, { Component } from 'react'
 
