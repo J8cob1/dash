@@ -1,0 +1,387 @@
+/* This part is 'W' first */
+.welcomeOne {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 100px;
+    margin-bottom: 1px;
+}
+
+.welcomeTwo {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 1px;
+}
+
+.welcomeThree {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 1px;
+}
+
+.welcomeFour {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 1px;
+}
+
+/* This part is 'W' second */
+.welcomeFive {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -40px;
+    margin-left: 5px;
+    margin-bottom: 1px;
+}
+
+.welcomeSix {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -40px;
+    margin-left: 5px;
+    margin-bottom: 1px;
+}
+
+.welcomeSeven {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -40px;
+    margin-left: 5px;
+    margin-bottom: 1px;
+}
+
+/* This part is 'W' third */
+.welcomeEight {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 1px;
+}
+
+.welcomeNine {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 1px;
+}
+
+.welcomeTen {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 1px;
+}
+
+/* This part is 'W' four */
+.welcomeEleven {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -40px;
+    margin-left: 15px;
+    margin-bottom: 1px;
+}
+
+.welcomeTwelve {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -40px;
+    margin-left: 15px;
+    margin-bottom: 1px;
+}
+
+.welcomeThirteen {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -40px;
+    margin-left: 15px;
+    margin-bottom: 1px;
+}
+
+/* This part is 'E' first  */
+.welcomeEOne {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -18px;
+    margin-left: 30px;
+    margin-bottom: 1px;
+}
+
+.welcomeETwo {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -15px;
+    margin-left: 45px;
+    margin-bottom: 1px;
+}
+
+.welcomeEThree {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -15px;
+    margin-left: 60px;
+    margin-bottom: 1px;
+}
+
+.welcomeEFour {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -15px;
+    margin-left: 75px;
+    margin-bottom: 1px;
+}
+
+.welcomeEFive {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -15px;
+    margin-left: 90px;
+    margin-bottom: 1px;
+}
+
+/* This part is 'E' second */
+.welcomeESix {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -5px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.welcomeESeven {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.welcomeEEight {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.welcomeENine {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -5px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+/* This part is 'E' third */
+.welcomeETen {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -70px;
+    margin-left: 45px;
+    margin-bottom: 10px;
+}
+
+.welcomeEEleven {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 60px;
+    margin-bottom: 10px;
+}
+
+.welcomeETwelve {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 75px;
+    margin-bottom: 10px;
+}
+
+/* This part is 'E' fourth  */
+.welcomeEThirteen {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 30px;
+    margin-left: 45px;
+    margin-bottom: 10px;
+}
+
+.welcomeEFourteen {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 60px;
+    margin-bottom: 10px;
+}
+
+.welcomeEFifteen {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 75px;
+    margin-bottom: 10px;
+}
+
+.welcomeESixteen {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 90px;
+    margin-bottom: 10px;
+}
+
+/* This part is 'L' first  */
+.welcomeLFirst {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -105px;
+    margin-left: 160px;
+    margin-bottom: 10px;
+}
+
+.welcomeLSecond {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -10px;
+    margin-left: 160px;
+    margin-bottom: 10px;
+}
+
+.welcomeLThird {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -10px;
+    margin-left: 160px;
+    margin-bottom: 10px;
+}
+
+.welcomeLFourth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -10px;
+    margin-left: 160px;
+    margin-bottom: 10px;
+}
+
+.welcomeLFifth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 0px;
+    margin-left: 160px;
+    margin-bottom: 10px;
+}
+
+/* This part is 'L' second */
+.welcomeLSixth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 175px;
+    margin-bottom: 10px;
+}
+
+.welcomeLSeventh {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 190px;
+    margin-bottom: 10px;
+}
+
+.welcomeLEighth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 205px;
+    margin-bottom: 10px;
+}
+
+.welcomeLNineth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 220px;
+    margin-bottom: 10px;
+}
+
+/* This part is 'C' first */
