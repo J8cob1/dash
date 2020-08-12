@@ -7,8 +7,8 @@
 
 import React, { Component } from 'react'
 
-import Title from './Title'
-import Form from './Form'
+import WeatherTitle from './WeatherTitle'
+import WeatherForm from './WeatherForm'
 import WeatherDetails from './WeatherDetails'
 
 require('dotenv').config()
@@ -57,8 +57,8 @@ class WeatherInfo extends Component {
     render() {
         return (
             <div>
-                <Title/>
-                    <Form getWeather={this.getWeather}/>
+                <WeatherTitle/>
+                    <WeatherForm getWeather={this.getWeather}/>
                     <WeatherDetails
                     temperature={this.state.temperature}
                     city={this.state.city}
