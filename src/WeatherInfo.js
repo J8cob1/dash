@@ -14,7 +14,7 @@ import WeatherDetails from './WeatherDetails'
 require('dotenv').config()
 
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-console.log(process.env);
+// console.log(process.env);
 
 class WeatherInfo extends Component {
   state = {
@@ -22,8 +22,10 @@ class WeatherInfo extends Component {
     city: undefined,
     country: undefined,
     humidity: undefined,
-    description: undefined,
-    error: undefined
+    pressure: undefined,
+    speed: undefined,
+    sunrise: undefined,
+    description: undefined
   }
 
   getWeather = async (e) => {
@@ -38,8 +40,10 @@ class WeatherInfo extends Component {
       city: data.name,
       country: data.sys.country,
       humidity: data.main.humidity,
-      description: data.weather[0].description,
-      error: ''
+      pressure: data.main.pressure,
+      speed: data.wind.speed,
+      sunrise: data.sys.sunrise,
+      description: data.weather[0].description
     });
   }
 
@@ -53,8 +57,10 @@ class WeatherInfo extends Component {
                   city={this.state.city}
                   country={this.state.country}
                   humidity={this.state.humidity}
+                  pressure={this.state.pressure}
+                  speed={this.state.speed}
+                  sunrise={this.state.sunrise}
                   description={this.state.description}
-                  error={this.state.error}
               />
           </div>
       )
