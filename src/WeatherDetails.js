@@ -1,5 +1,5 @@
 // https://www.youtube.com/watch?v=204C9yNeOYI
-// Use this above link to do the Open Weather API as an example
+// Use this above link to lean how to call the Open Weather API as an example
 // To finish our project
 
 // https://github.com/moment/moment/
@@ -8,12 +8,13 @@
 
 import React, { Component } from 'react'
 import Moment from 'react-moment'
+import 'moment-timezone'
 class WeatherDetails extends Component {
     render() {
         const cityStyle = {
             fontFamily: "Cursive"
         };
- 
+
         return (
             <div style={cityStyle}>
                 {this.props.city && this.props.country && <p>Location: {this.props.city}, US</p>}
@@ -22,7 +23,7 @@ class WeatherDetails extends Component {
                     this.props.sunrise &&   <p>
                                                 Sunrise:  
                                                     <Moment format=" hh:mm " unix>
-                                                        {this.props.sunrise}
+                                                        {this.props.sunrise} 
                                                     </Moment>  
                                                 AM
                                             </p>
