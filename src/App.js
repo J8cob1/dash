@@ -8,6 +8,7 @@ import SideBar from "./SideBar";
 import Quote from "./Quote";
 import Weather from "./Weather";
 import News from './News';
+import Welcome from './Welcome.js'
 
 import {getLocStorage, setLocStorage, quote, weather, cal, twitter, mail, news} from "./PersistantState";
 
@@ -263,6 +264,9 @@ class App extends React.Component{
                 signIn={this.signIn}
                 signOut={this.signOut}
             />
+
+            <Welcome/>
+
             <SideBar
                 width={this.state.width}
                 height={this.state.height}
