@@ -13,7 +13,7 @@ class WeatherDetails extends Component {
         const cityStyle = {
             fontFamily: "Cursive"
         };
-
+ 
         return (
             <div style={cityStyle}>
                 {this.props.city && this.props.country && <p>Location: {this.props.city}, US</p>}
