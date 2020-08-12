@@ -8,7 +8,6 @@
 
 import React, { Component } from 'react'
 import Moment from 'react-moment'
-import 'moment-timezone'
 class WeatherDetails extends Component {
     render() {
         const cityStyle = {
