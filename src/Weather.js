@@ -16,7 +16,7 @@ export default function Weather(props){
             className="WeatherWidget"
             default={{
                 x: -100,
-                y: 300,
+                y: 200,
             }}>
             <div className="handle">
                 <WeatherInfo/>
