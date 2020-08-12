@@ -2,6 +2,14 @@
 https://github.com/alemesa/news-api-react/blob/master/src/Display.css
 Used as reference */
 
+.newsWidget {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto; /* https://stackoverflow.com/questions/21227287/make-div-scrollable */
+    text-align: center;
+}
 .cardsContainer {
 	display: flex;
 	flex-direction: column;

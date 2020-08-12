@@ -7,10 +7,11 @@ import EmailWidget from "./EmailWidget";
 import SideBar from "./SideBar";
 import Quote from "./Quote";
 import Weather from "./Weather";
-import News from './News';
 import Welcome from './Welcome.js'
+import News from './NewsWidget';
 
-import {getLocStorage, setLocStorage, quote, weather, cal, twitter, mail, news} from "./PersistantState";
+
+import {getLocStorage, setLocStorage, quote, weather, cal, mail, news} from "./PersistantState";
 
 // https://stackoverflow.com/questions/51977448/how-to-use-gapi-in-react
 // https://www.npmjs.com/package/gapi-script
@@ -25,7 +26,6 @@ class App extends React.Component{
         this.state = {
             width: 150,
             height: 2,
-            twitter: false,
             mail: false,
             calendar: true,
             quote: false,
@@ -116,26 +116,6 @@ class App extends React.Component{
             });
         }
     }
-
-    // Twitter section
-    toggleTwitter = () => error => {
-        if(this.state.quote){
-            this.setState({
-                ...this.state,
-                twitter: false
-            })
-            setLocStorage(twitter, false)
-
-        } else {
-            this.setState({
-                ...this.state,
-                twitter: true
-            })
-            setLocStorage(twitter, true)
-
-        }
-        console.log("Clicked Twitter");
-    };
     // Email section
     toggleMail = () => error => {
         if(this.state.mail){
@@ -270,7 +250,6 @@ class App extends React.Component{
             <SideBar
                 width={this.state.width}
                 height={this.state.height}
-                toggleTwitter={this.toggleTwitter}
                 toggleMail={this.toggleMail}
                 toggleQuote={this.toggleQuote}
                 toggleWeather={this.toggleWeather}
