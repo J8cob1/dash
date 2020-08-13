@@ -13,6 +13,12 @@ Copyright © 2020 Michael Change, Jacob Crisan, Trevor Hensel, Shengjia He
 ## Project Description
 Dash is a online application that will allow users to build personal dashboards with various features. At the moment we feature Google calendar integration, Gmail integration, a news feed and a weather update.
 
+## License
+
+This program is licensed under the "MIT License", Please
+see the file ['LICENSE'](https://github.com/psu-oss-group-personalOrganizers/helpful-organizers/blob/master/LICENSE) in the source distribution of this
+software for license terms.
+
 ## Features/Testing
 
 The application has the following features confirmed (all or mostly) functional via manual testing:
@@ -39,11 +45,18 @@ You can open [MVP Version](https://dash-dusky.vercel.app/) to look at the Minimu
 
 You can use the ['Githubpage'](https://github.com/J8cob1/dash) to look at the code
 
-## License
+## Setup
 
-This program is licensed under the "MIT License", Please
-see the file ['LICENSE'](https://github.com/psu-oss-group-personalOrganizers/helpful-organizers/blob/master/LICENSE) in the source distribution of this
-software for license terms.
+Before running the app, you must:
+- Setup a Google project with an OAth Client and the Gmail and Google Calendar API's activated. You will need to create an API key for the Google Calendar and Gmail APIs in order to use them with the front-end react application
+- Create a .env file containing the following information:
+  ```
+  REACT_APP_GOOGLE_CLIENT_ID="*google project client id*"
+  REACT_APP_GOOGLE_API_KEY="*google project api key*"
+  REACT_APP_WEATHER_API_KEY="*weather api key*"
+  REACT_APP_NEWS_API_KEY="*news api key*"
+  ```
+- Find somewhere to host the application if you want to run it on more than just your local computer. Vercel, as we used, is a good option
 
 ## Bootstrapping
 
