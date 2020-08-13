@@ -10,6 +10,9 @@ Copyright © 2020 Michael Change, Jacob Crisan, Trevor Hensel, Shengjia He
 - [Shengjia He](mailto:shengjia@pdx.edu)
 - [Trevor Hensel](mailto:hensel@pdx.edu)
 
+## Project Description
+Dash is a online application that will allow users to build personal dashboards with various features. At the moment we feature Google calendar integration, Gmail integration, a news feed and a weather update.
+
 ## Tech stack
 Fronted: React.js
 
