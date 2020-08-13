@@ -53,7 +53,7 @@ Before running the app, you must:
   ```
   REACT_APP_GOOGLE_CLIENT_ID="*google project client id*"
   REACT_APP_GOOGLE_API_KEY="*google project api key*"
-  REACT_APP_WEATHER_API_KEY="*weather api key*"
+  REACT_APP_WEATHER_API_KEY="*use the openweather to get the api key, the link is: https://openweathermap.org/api*"
   REACT_APP_NEWS_API_KEY="*news api key*"
   ```
 - Find somewhere to host the application if you want to run it on more than just your local computer. Vercel, as we used, is a good option
