@@ -35,6 +35,15 @@
     margin-bottom: 1px;
 }
 
+.welcomeFourOne {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 1px;
+}
+
 /* This part is 'W' second */
 .welcomeFive {
     width: 15px;
@@ -125,6 +134,36 @@
     border-radius: 50%;
     margin-top: -40px;
     margin-left: 15px;
+    margin-bottom: 1px;
+}
+
+.welcomeThirteenOne {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -40px;
+    margin-left: 25px;
+    margin-bottom: 1px;
+}
+
+.welcomeThirteenTwo {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -40px;
+    margin-left: 34px;
+    margin-bottom: 1px;
+}
+
+.welcomeThirteenThree {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -40px;
+    margin-left: 44px;
     margin-bottom: 1px;
 }
 
@@ -385,3 +424,827 @@
 }
 
 /* This part is 'C' first */
+.welcomeCFirst {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 220px;
+    margin-bottom: 10px;
+}
+
+.welcomeCSecond {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -35px;
+    margin-left: 240px;
+    margin-bottom: 10px;
+}
+
+.welcomeCThird {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -35px;
+    margin-left: 255px;
+    margin-bottom: 13px;
+}
+
+.welcomeCFourth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -30px;
+    margin-left: 279px;
+    margin-bottom: 14px;
+}
+
+.welcomeCFifth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -30px;
+    margin-left: 310px;
+    margin-bottom: 14px;
+}
+
+.welcomeCSixth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -28px;
+    margin-left: 340px;
+    margin-bottom: 14px;
+}
+
+.welcomeCSeventh {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -29px;
+    margin-left: 369px;
+    margin-bottom: 14px;
+}
+
+.welcomeCEighth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -29px;
+    margin-left: 395px;
+    margin-bottom: 14px;
+}
+
+.welcomeCNineth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -28px;
+    margin-left: 420px;
+    margin-bottom: 14px;
+}
+
+/* This part is 'C' second */
+.welcomeCTenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -5px;
+    margin-left: 240px;
+    margin-bottom: 14px;
+}
+
+.welcomeCEleventh {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -10px;
+    margin-left: 255px;
+    margin-bottom: 14px;
+}
+
+.welcomeCTwelfth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -10px;
+    margin-left: 270px;
+    margin-bottom: 14px;
+}
+
+.welcomeCThirteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -15px;
+    margin-left: 290px;
+    margin-bottom: 14px;
+}
+
+.welcomeCFourteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -28px;
+    margin-left: 315px;
+    margin-bottom: 14px;
+}
+
+.welcomeCFifteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -28px;
+    margin-left: 340px;
+    margin-bottom: 14px;
+}
+
+.welcomeCSixteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -28px;
+    margin-left: 365px;
+    margin-bottom: 14px;
+}
+
+.welcomeCSeventeenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -28px;
+    margin-left: 390px;
+    margin-bottom: 14px;
+}
+
+/* This part is 'O' first  */
+.welcomeOFirst {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -90px;
+    margin-left: 400px;
+    margin-bottom: 14px;
+}
+
+.welcomeOSecond {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -10px;
+    margin-left: 400px;
+    margin-bottom: 14px;
+}
+
+.welcomeOThird {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -9px;
+    margin-left: 400px;
+    margin-bottom: 14px;
+}
+
+.welcomeOFourth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -14px;
+    margin-left: 413px;
+    margin-bottom: 14px;
+}
+
+/* This part is 'O' second */
+.welcomeOFifth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -28px;
+    margin-left: 427px;
+    margin-bottom: 14px;
+}
+
+.welcomeOSixth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -29px;
+    margin-left: 441px;
+    margin-bottom: 14px;
+}
+
+.welcomeOSeventh {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -29px;
+    margin-left: 454px;
+    margin-bottom: 14px;
+}
+
+.welcomeOEighth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -29px;
+    margin-left: 461px;
+    margin-bottom: 14px;
+}
+
+/* This part is 'O' third */
+.welcomeONineth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -44px;
+    margin-left: 468px;
+    margin-bottom: 14px;
+}
+
+.welcomeOTenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -45px;
+    margin-left: 468px;
+    margin-bottom: 14px;
+}
+
+.welcomeOEleventh {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -50px;
+    margin-left: 468px;
+    margin-bottom: 14px;
+}
+
+/* This part is 'O' fourth */
+.welcomeOTwelfth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -57px;
+    margin-left: 468px;
+    margin-bottom: 14px;
+}
+
+.welcomeOThirteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -58px;
+    margin-left: 468px;
+    margin-bottom: 14px;
+}
+
+.welcomeOFourteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -49px;
+    margin-left: 468px;
+    margin-bottom: 14px;
+}
+
+/* This part is 'O' fifth */
+.welcomeOFifteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -30px;
+    margin-left: 460px;
+    margin-bottom: 14px;
+}
+
+.welcomeOSixteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -29px;
+    margin-left: 452px;
+    margin-bottom: 14px;
+}
+
+.welcomeOSeventeenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -29px;
+    margin-left: 445px;
+    margin-bottom: 14px;
+}
+
+.welcomeOEightteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -29px;
+    margin-left: 440px;
+    margin-bottom: 14px;
+}
+
+.welcomeONineteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -29px;
+    margin-left: 440px;
+    margin-bottom: 14px;
+}
+
+/* This part is 'O' sixth */
+.welcomeOTwenty {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -15px;
+    margin-left: 440px;
+    margin-bottom: 14px;
+}
+
+/* This part is 'M' first  */
+.welcomeMFirst {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 90px;
+    margin-left: 500px;
+    margin-bottom: 14px;
+}
+
+.welcomeMSecond {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -67px;
+    margin-left: 500px;
+    margin-bottom: 10px;
+}
+
+.welcomeMThird {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -42px;
+    margin-left: 505px;
+    margin-bottom: 10px;
+}
+
+.welcomeMFourth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -42px;
+    margin-left: 510px;
+    margin-bottom: 10px;
+}
+
+.welcomeMFifth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -42px;
+    margin-left: 515px;
+    margin-bottom: 10px;
+}
+
+.welcomeMSixth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -42px;
+    margin-left: 520px;
+    margin-bottom: 10px;
+}
+
+.welcomeMSeventh {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -42px;
+    margin-left: 525px;
+    margin-bottom: 10px;
+}
+
+.welcomeMEighth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -42px;
+    margin-left: 533px;
+    margin-bottom: 10px;
+}
+
+/* This part is 'M' second */
+.welcomeMNineth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -7px;
+    margin-left: 545px;
+    margin-bottom: 10px;
+}
+
+.welcomeMTenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -7px;
+    margin-left: 550px;
+    margin-bottom: 10px;
+}
+
+.welcomeMEleventh {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -7px;
+    margin-left: 557px;
+    margin-bottom: 10px;
+}
+
+.welcomeMTwelfth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -7px;
+    margin-left: 564px;
+    margin-bottom: 10px;
+}
+
+.welcomeMThirteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -7px;
+    margin-left: 570px;
+    margin-bottom: 10px;
+}
+
+.welcomeMFourteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -7px;
+    margin-left: 578px;
+    margin-bottom: 10px;
+}
+
+/* This part is 'M' third */
+.welcomeMFifteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -7px;
+    margin-left: 576px;
+    margin-bottom: 10px;
+}
+
+.welcomeMSixteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -43px;
+    margin-left: 578px;
+    margin-bottom: 10px;
+}
+
+.welcomeMSeventeenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -26px;
+    margin-left: 590px;
+    margin-bottom: 10px;
+}
+
+.welcomeMEightteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -8px;
+    margin-left: 585px;
+    margin-bottom: 10px;
+}
+
+.welcomeMNineteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 18px;
+    margin-left: 588px;
+    margin-bottom: 10px;
+}
+
+.welcomeMTwenty {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -10px;
+    margin-left: 594px;
+    margin-bottom: 10px;
+}
+
+/* This part is 'M' fourth */
+.welcomeMTwentyOne {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -7px;
+    margin-left: 594px;
+    margin-bottom: 10px;
+}
+
+/* This part is 'E' first */
+.welcomeSEFirst {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -18px;
+    margin-left: 594px;
+    margin-bottom: 10px;
+}
+
+.welcomeSESecond {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -39px;
+    margin-left: 594px;
+    margin-bottom: 10px;
+}
+
+.welcomeSEThird {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -40px;
+    margin-left: 594px;
+    margin-bottom: 10px;
+}
+
+.welcomeSEFourth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -30px;
+    margin-left: 594px;
+    margin-bottom: 10px;
+}
+
+.welcomeSEFifth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -20px;
+    margin-left: 594px;
+    margin-bottom: 10px;
+}
+
+.welcomeSESixth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -20px;
+    margin-left: 594px;
+    margin-bottom: 10px;
+}
+
+.welcomeSESeventh {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -20px;
+    margin-left: 594px;
+    margin-bottom: 10px;
+}
+
+/* This part is 'E' second */
+.welcomeSEEighth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -39px;
+    margin-left: 615px;
+    margin-bottom: 10px;
+}
+
+.welcomeSENineth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 625px;
+    margin-bottom: 10px;
+}
+
+.welcomeSETenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 635px;
+    margin-bottom: 10px;
+}
+
+.welcomeSEEleventh {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 645px;
+    margin-bottom: 10px;
+}
+
+/* This part is 'E' third */
+.welcomeSETwelfth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -11px;
+    margin-left: 615px;
+    margin-bottom: 10px;
+}
+
+.welcomeSEThirteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 625px;
+    margin-bottom: 10px;
+}
+
+.welcomeSEFourteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 635px;
+    margin-bottom: 10px;
+}
+
+.welcomeSEFifteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 645px;
+    margin-bottom: 10px;
+}
+
+.welcomeSESixteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 655px;
+    margin-bottom: 10px;
+}
+
+.welcomeSESeventeenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 665px;
+    margin-bottom: 10px;
+}
+
+/* This part is 'E' fourth */
+.welcomeSEEightteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -5px;
+    margin-left: 615px;
+    margin-bottom: 10px;
+}
+
+.welcomeSENineteenth {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 625px;
+    margin-bottom: 10px;
+}
+
+.welcomeSETwenty {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 635px;
+    margin-bottom: 10px;
+}
+
+.welcomeSETwentyOne {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 645px;
+    margin-bottom: 10px;
+}
+
+.welcomeSETwentyTwo {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 655px;
+    margin-bottom: 10px;
+}
+
+.welcomeSETwentyThree {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: -25px;
+    margin-left: 665px;
+    margin-bottom: 10px;
+}
