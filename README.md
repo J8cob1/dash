@@ -13,6 +13,17 @@ Copyright © 2020 Michael Change, Jacob Crisan, Trevor Hensel, Shengjia He
 ## Project Description
 Dash is a online application that will allow users to build personal dashboards with various features. At the moment we feature Google calendar integration, Gmail integration, a news feed and a weather update.
 
+## Features/Testing
+
+The application has the following features confirmed (all or mostly) functional via manual testing:
+- Customizable Background Color
+- Google Sign In
+- Google Calendar Widget - Allows users to see events on their Google Calendars. Not configurable
+- Google Mail Widget - Allows users to view emails associated with your account. Configurable
+- Quotes Widget - Displays a quote. Not configurable
+- Weather Widget - Allows users to get basic weather details for certain cities. Not configurable
+- News Widget - Displays news events. Not configurable
+
 ## Tech stack
 Fronted: React.js
 
