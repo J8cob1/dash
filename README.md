@@ -139,3 +139,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 ## Note
 
 If there seem to be a lot of comments in certain parts of the source code, one of the group members was paranoid about citing his sources...
+
+## Acknowledgements
+
