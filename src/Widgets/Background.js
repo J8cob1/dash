@@ -12,9 +12,9 @@ class Background extends Component {
     state = {
         displayColorPicker: false,
         color: {
-            r: '77',
-            g: '192',
-            b: '157',
+            r: 'ff',
+            g: 'ff',
+            b: 'ff',
             a: '100',
         },
     };

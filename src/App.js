@@ -1,17 +1,18 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
-import Topbar from './Topbar';
-import Footer from './Footer';
-import CalendarWidget from './CalendarWidget';
-import EmailWidget from "./EmailWidget";
-import SideBar from "./SideBar";
-import Quote from "./Quote";
-import Weather from "./Weather";
-import Welcome from './Welcome.js'
-import News from './NewsWidget';
+import Topbar from './UI/Topbar';
+import Footer from './UI/Footer';
+import CalendarWidget from './Widgets/CalendarWidget';
+import EmailWidget from "./Widgets/EmailWidget";
+import SideBar from "./UI/SideBar";
+import Quote from "./Widgets/Quote";
+import Weather from "./Widgets/Weather";
+import Welcome from './UI/Welcome.js'
+import News from './Widgets/NewsWidget';
+import SettingsMenu from "./UI/SettingsMenu";
+import MovingBackground from './UI/MovingBackground';
 
-
-import {getLocStorage, setLocStorage, quote, weather, cal, mail, news} from "./PersistantState";
+import {getLocStorage, setLocStorage, quote, weather, cal, mail, news, welcomeBackground, movingBackground} from "./Tools/PersistantState";
 
 // https://stackoverflow.com/questions/51977448/how-to-use-gapi-in-react
 // https://www.npmjs.com/package/gapi-script
@@ -31,6 +32,9 @@ class App extends React.Component{
             quote: false,
             weather: false,
             news: false,
+            settings: false,
+            welcomeBackgroundOn: true,
+            movingOn: false,
             quoteX: 0,
             QuoteY: 0,
             quoteData: '',
@@ -56,13 +60,17 @@ class App extends React.Component{
         let calData = (getLocStorage(cal) === 'true');
         let mailData = (getLocStorage(mail) === 'true');
         let newsData = (getLocStorage(news) === 'true');
+        let welcomeData = (getLocStorage(welcomeBackground) === 'true');
+        let movingData = (getLocStorage(movingBackground) === 'true');
         this.setState({
             ...this.state,
             quote: quoteData,
             weather: weatherData,
             calendar: calData,
             mail: mailData,
-            news: newsData
+            news: newsData,
+            welcomeBackgroundOn: welcomeData,
+            movingOn: movingData
         });
         this.updateQuote();
     }
@@ -116,6 +124,21 @@ class App extends React.Component{
             });
         }
     }
+    // Settings section
+    toggleSettings = () => error => {
+        if(this.state.settings){
+            this.setState({
+                ...this.state,
+                settings: false
+            })
+        } else {
+            this.setState({
+                ...this.state,
+                settings: true
+            })
+        }
+        console.log("Clicked settings");
+    };
     // Email section
     toggleMail = () => error => {
         if(this.state.mail){
@@ -235,6 +258,38 @@ class App extends React.Component{
         }
         console.log("Clicked News");
     };
+    toggleWelcome = () => error => {
+        if(this.state.welcomeBackgroundOn){
+            this.setState({
+                ...this.state,
+                welcomeBackgroundOn: false
+            })
+            setLocStorage(welcomeBackground, false)
+        } else {
+            this.setState({
+                ...this.state,
+                welcomeBackgroundOn: true
+            })
+            setLocStorage(welcomeBackground, true)
+        }
+        console.log("Clicked welcome");
+    };
+    toggleMoving = () => error => {
+        if(this.state.movingOn){
+            this.setState({
+                ...this.state,
+                movingOn: false
+            })
+            setLocStorage(movingBackground, false)
+        } else {
+            this.setState({
+                ...this.state,
+                movingOn: true
+            })
+            setLocStorage(movingBackground, true)
+        }
+        console.log("Clicked moving");
+    };
     render(){
       return (
         <div>
@@ -245,11 +300,12 @@ class App extends React.Component{
                 signOut={this.signOut}
             />
 
-            <Welcome/>
+            {this.state.welcomeBackgroundOn && <Welcome/>}
 
             <SideBar
                 width={this.state.width}
                 height={this.state.height}
+                toggleSettings={this.toggleSettings}
                 toggleMail={this.toggleMail}
                 toggleQuote={this.toggleQuote}
                 toggleWeather={this.toggleWeather}
@@ -281,10 +337,19 @@ class App extends React.Component{
                 <Weather/>
             }
             {/* News section */}
-            {this.state.news &&
+            {false &&
                 <News/>
             }
+            <SettingsMenu
+                isOpen={this.state.settings}
+                toggleSettings={this.toggleSettings}
+                toggleWelcome={this.toggleWelcome}
+                welcomeOpen={this.state.welcomeBackgroundOn}
+                toggleMoving={this.toggleMoving}
+                movingOpen={this.state.movingOn}
+            />
             <Footer/>
+            {this.state.movingOn && <MovingBackground/>}
         </div>
       );
 }

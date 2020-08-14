@@ -3,7 +3,7 @@ import Calendar from 'react-calendar';
 import Button from 'react-bootstrap/Button';
 import 'react-calendar/dist/Calendar.css';
 import { Rnd } from 'react-rnd';
-import "./cal.css";
+import "../App.css";
 
 class CalendarWidget extends React.Component {
     // State
@@ -119,7 +119,14 @@ class CalendarWidget extends React.Component {
         })
 
         return (
-            <Rnd className="Widget">
+            <Rnd className="Widget"
+                 default={{
+                     x: -250,
+                     y: -70,
+                     width: 500,
+                     height: 600,
+                 }}
+            >
                 <div className="calendar">
                     <Calendar
                         onChange={this.getCalendarEvents}

@@ -2,16 +2,12 @@
 //https://medium.com/javascript-in-plain-english/create-a-reusable-sidebar-component-with-react-d75cf48a053a
 //Used to create SideBar for Dash
 
-import "./SideBar.css";
+import "../App.css";
 import React from "react";
-import { FiMail } from 'react-icons/fi';
-import { BsChatQuote } from 'react-icons/bs';
-import { TiWeatherPartlySunny } from 'react-icons/ti';
-import { FaRegNewspaper } from 'react-icons/fa';
-import { IoMdCalendar } from 'react-icons/io' //  https://github.com/react-icons/react-icons
+import { IoIosMail, IoMdCalendar, IoMdSettings, IoIosQuote, IoIosPartlySunny, IoIosBook} from 'react-icons/io';
 
 export default function SideBar(props) {
-    const {width, height, toggleMail, toggleQuote, toggleWeather, toggleCalendar, toggleNews} = props;
+    const {width, height, toggleSettings, toggleMail, toggleQuote, toggleWeather, toggleCalendar, toggleNews} = props;
     const [xPosition, setX] = React.useState(-width);
 
     const toggleMenu = () => {
@@ -43,13 +39,22 @@ export default function SideBar(props) {
                         transform: `translate(${width}px, 20vh)`
                     }}
                 ></button>
+                {/* Settings section */}
+                <div className="content">
+                    <button
+                        onClick={toggleSettings()}
+                        className="button"
+                    >
+                        <IoMdSettings/>
+                    </button>
+                </div>
                 {/* Email section */}
                 <div className="content">
                     <button
                         onClick={toggleMail()}
                         className="button"
                     >
-                        <FiMail/>
+                        <IoIosMail/>
                     </button>
                 </div>
                 <div className="content">
@@ -66,7 +71,7 @@ export default function SideBar(props) {
                         onClick={toggleQuote}
                         className="button"
                     >
-                        <BsChatQuote/>
+                        <IoIosQuote/>
                     </button>
                 </div>
                 {/* Weather section */}
@@ -75,7 +80,7 @@ export default function SideBar(props) {
                         onClick={toggleWeather()}
                         className="button"
                     >
-                        <TiWeatherPartlySunny/>
+                        <IoIosPartlySunny/>
                     </button>
                 </div>
                 {/* News section */}
@@ -84,7 +89,7 @@ export default function SideBar(props) {
                         onClick={toggleNews()}
                         className="button"
                     >
-                        <FaRegNewspaper/>
+                        <IoIosBook/>
                     </button>
                 </div>
             </div>

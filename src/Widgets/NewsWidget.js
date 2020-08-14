@@ -14,8 +14,9 @@
 //Used as reference
 
 import React, { Component } from 'react';
-import "./NewsWidget.css"
+import "../App.css"
 import { Rnd } from 'react-rnd';
+
 
 
 
@@ -62,14 +63,15 @@ class News extends Component {
     return (
         <Rnd
             minWidth= {700}
-            minHeight= {300}
+            minHeight= {200}
             className="Widget"
             default={{
-                width: 700,
-                height:300,
-                x: -100,
-                y: 300,
-            }}>
+                x: 275,
+                y: 450,
+                width: 300,
+                height: 200
+            }}
+        >
             <div className="newsWidget">
                 <h4>NEWS</h4>
                 <div className="cardsContainer">
