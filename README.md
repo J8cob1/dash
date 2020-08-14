@@ -47,7 +47,9 @@ You can use the ['Githubpage'](https://github.com/J8cob1/dash) to look at the co
 
 ## Setup/Installing/Building
 
-Before running the app, you must:
+Firstly, clone the repository using "git clone https://github.com/J8cob1/dash.git" to a repository of your choice and cd into the "Dash" directory that was created
+
+Secondly, running the app, you must:
 - Setup a Google project with an OAth Client and the Gmail and Google Calendar API's activated. You will need to create an API key for the Google Calendar and Gmail APIs in order to use them with the front-end react application
 - Create a .env file containing the following information:
   ```
@@ -57,8 +59,6 @@ Before running the app, you must:
   REACT_APP_NEWS_API_KEY="*use Gnews to get the api key, the link is: https://gnews.io/*"
   ```
 - Find somewhere to host the application if you want to run it on more than just your local computer. Vercel, as we used, is a good option
-
-Next, clone the repository using "git clone https://github.com/J8cob1/dash.git" to a repository of your choice and cd into the "dash" directory that was created
 
 Lastly, to run a local development server:
 - Run "npm install" (if you haven't already or are missing a package). This installs the project dependencies
