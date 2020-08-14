@@ -122,7 +122,7 @@ class CalendarWidget extends React.Component {
             <Rnd className="Widget"
                  default={{
                      x: -250,
-                     y: 0,
+                     y: -70,
                      width: 500,
                      height: 600,
                  }}
