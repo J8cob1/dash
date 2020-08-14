@@ -47,7 +47,7 @@ You can use the ['Githubpage'](https://github.com/J8cob1/dash) to look at the co
 
 ## Setup/Installing/Building
 
-Firstly, clone the repository using "git clone https://github.com/J8cob1/dash.git" to a repository of your choice and cd into the "Dash" directory that was created
+Firstly, clone the repository using "git clone https://github.com/J8cob1/dash.git" to a repository of your choice and cd into the "dash" directory that was created
 
 Secondly, running the app, you must:
 - Setup a Google project with an OAth Client and the Gmail and Google Calendar API's activated. You will need to create an API key for the Google Calendar and Gmail APIs in order to use them with the front-end react application
