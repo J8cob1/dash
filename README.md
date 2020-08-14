@@ -142,3 +142,5 @@ If there seem to be a lot of comments in certain parts of the source code, one o
 
 ## Acknowledgements
 
+We want to give special thanks to the following People/Projects as they allowed this project to happen with their open-source contributions.
+-[Ionicons](https://ionicons.com/)
