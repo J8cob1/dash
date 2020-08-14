@@ -58,7 +58,7 @@ Before running the app, you must:
   ```
 - Find somewhere to host the application if you want to run it on more than just your local computer. Vercel, as we used, is a good option
 
-Next, clone the repository using "git clone https://github.com/J8cob1/dash.git" to a repository of your choice and cd into the "Dash" directory that was created
+Next, clone the repository using "git clone https://github.com/J8cob1/dash.git" to a repository of your choice and cd into the "dash" directory that was created
 
 Lastly, to run a local development server:
 - Run "npm install" (if you haven't already or are missing a package). This installs the project dependencies
