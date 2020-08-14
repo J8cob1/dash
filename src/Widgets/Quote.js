@@ -9,8 +9,7 @@
 
 import React from "react";
 import Draggable from "react-draggable";
-import "./App.css"
-import "./quotecss.css"
+import "../App.css"
 import { Rnd } from 'react-rnd';
 
 const stylesCredit = {
@@ -21,8 +20,15 @@ const stylesCredit = {
 export default function Quote(props){
     const {data, author} = props;
     return(
-        <div className = "quote">
-            <Rnd>
+        <div>
+            <Rnd
+                default={{
+                    x: 275,
+                    y: 350,
+                    width: 600,
+                    height: 200
+                }}
+            >
                 <div className="Widget">
                     {data}
                     <br/>

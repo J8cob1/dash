@@ -3,8 +3,7 @@
 //Used to create draggable and resizable 'widgets'
 
 import React from "react";
-import "./App.css"
-import "./Weather.css"
+import "../App.css"
 import WeatherInfo from "./WeatherInfo"
 import { Rnd } from 'react-rnd';
 
@@ -15,9 +14,12 @@ export default function Weather(props){
             minHeight= {400}
             className="Widget"
             default={{
-                x: -100,
-                y: 200,
-            }}>
+                x: 900,
+                y: 30,
+                width: 200,
+                height: 300
+            }}
+        >
             <div className="handle">
                 <WeatherInfo/>
             </div>

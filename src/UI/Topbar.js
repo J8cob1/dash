@@ -2,11 +2,11 @@
 // https://github.com/react-bootstrap/react-bootstrap
 // Get the example from the above link
 
-import React, { Component } from 'react'
-import Navbar from 'react-bootstrap/Navbar'
-import Button from 'react-bootstrap/Button'
-import Background from './Background'
-import './BackgroundColor.css'
+import React, { Component } from 'react';
+import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
+import Background from '../Widgets/Background';
+import '../App.css';
 
 class TestTopbar extends Component {
     render() {
@@ -29,10 +29,10 @@ class TestTopbar extends Component {
                 <Navbar bg="dark" expand="lg" variant="dark" fixed="top">
                     <Navbar.Brand href="#home">Dash</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">                               
+                        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                             <div className="colorStyle centered">
                                 <Navbar.Text className="colorStyle centered">
-                                    Background Color:  
+                                    Background Color:
                                 </Navbar.Text>
                                 <Navbar.Text className="colorBackground centered bordered">
                                     <Background />

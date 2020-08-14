@@ -2,7 +2,7 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Rnd } from 'react-rnd';
-import "./email.css";
+import "../App.css";
 import { BsInbox, BsShieldFill } from 'react-icons/bs';
 
 class EmailWidget extends React.Component {
@@ -187,14 +187,14 @@ class EmailWidget extends React.Component {
 
         return (
             <Rnd
-                minWidth= {700}
+                minWidth= {600}
                 minHeight= {300}
                 className="Widget"
                 default={{
-                    width: 700,
-                    height:300,
-                    x: -100,
-                    y: 300,
+                    x: 275,
+                    y: 30,
+                    width: 600,
+                    height: 300
                 }}>
                 <div className="email-container">
                     <h2>Emails</h2>
