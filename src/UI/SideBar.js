@@ -2,6 +2,9 @@
 //https://medium.com/javascript-in-plain-english/create-a-reusable-sidebar-component-with-react-d75cf48a053a
 //Used to create SideBar for Dash
 
+//https://react-icons.github.io/react-icons/icons?name=io
+//Used it to get the icons
+
 import "../App.css";
 import React from "react";
 import { IoIosMail, IoMdCalendar, IoMdSettings, IoIosQuote, IoIosPartlySunny, IoIosBook} from 'react-icons/io';
