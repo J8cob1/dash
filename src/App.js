@@ -337,7 +337,7 @@ class App extends React.Component{
                 <Weather/>
             }
             {/* News section */}
-            {false &&
+            {this.state.news &&
                 <News/>
             }
             <SettingsMenu
