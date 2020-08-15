@@ -13,6 +13,9 @@ Copyright © 2020 Michael Change, Jacob Crisan, Trevor Hensel, Shengjia He
 ## Project Description
 Dash is a online application that will allow users to build personal dashboards with various features. At the moment we feature Google calendar integration, Gmail integration, a news feed and a weather update.
 
+## Project Demo
+[![Demo Video](doc/Dash_demo.gif)](https://www.youtube.com/watch?v=K9CctkwYnpU "Dash demo - Click to Watch!")
+
 ## License
 
 This program is licensed under the "MIT License", Please
