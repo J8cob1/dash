@@ -22,6 +22,7 @@ software for license terms.
 ## Contributors and Users
 
 All contributors and Users are expected to follow all applicable guidlines in place:
+
 -[Code of Conduct](https://github.com/J8cob1/dash/blob/master/CODE_OF_CONDUCT.md)
 
 ## Features/Testing
