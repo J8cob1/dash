@@ -59,7 +59,7 @@ Secondly, running the app, you must:
 - Setup a Google project with an OAth Client and the Gmail and Google Calendar API's activated. You will need to create an API key for the Calendar and Gmail APIs. When doing so:
   * Be sure to configure the API Key correctly. Make sure that there are no restrictions that block the dash application from running. An easy way to get up and running quickly is to have no restrictions on the key, though for security reasons, it might be wise to have some. 
   * Be sure to configure the OAuth Client correctly. When editing the client's settings, you will see an "Authorized JavaScript Origins" section. If running a local development server, you will need to add "http://localhost:3000" to the section. If deploying somewhere, you will need to add the url of the deployed site to the section). 
-  The Google Calendar Quickstart page (https://developers.google.com/calendar/quickstart/js) has some buttons that can help you set some of this up quickly. You will still need to enable the Gmail API and configure the API Key and OAuth Client though (Google searches can help with this). 
+  * The Google Calendar Quickstart page (https://developers.google.com/calendar/quickstart/js) has some buttons that can help you set some of this up quickly. You will still need to enable the Gmail API and configure the API Key and OAuth Client though (Google searches can help with this). 
 - Create a .env file containing the following information:
   ```
   REACT_APP_GOOGLE_CLIENT_ID="*google project client id*"
