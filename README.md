@@ -19,6 +19,11 @@ This program is licensed under the "MIT License", Please
 see the file ['LICENSE'](https://github.com/psu-oss-group-personalOrganizers/helpful-organizers/blob/master/LICENSE) in the source distribution of this
 software for license terms.
 
+## Contributors and Users
+
+All contributors and Users are expected to follow all applicable guidlines in place:
+-[Code of Conduct](https://github.com/J8cob1/dash/blob/master/CODE_OF_CONDUCT.md)
+
 ## Features/Testing
 
 The application has the following features confirmed (all or mostly) functional via manual testing:
