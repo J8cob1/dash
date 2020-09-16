@@ -74,16 +74,27 @@ class CalendarWidget extends React.Component {
             // Got a tip from someone
             let counter = 0;
             calendarList.forEach(entry => {
-                this.props.googleAPIObj.client.calendar.events.list({"calendarId": entry.id, "timeMax": eventEndDate.toISOString(), "timeMin": eventStartDate.toISOString()}).then((response) => {
-                  let events = response.result.items;
-                  events.forEach((event) => {
-                    // Update the state with the events... one by one. I hope there is a better way to do this
-                    this.setState ({
-                        "date": date,
-                        events: this.state.events.concat([{title: event.summary, description: event.description, index: counter}]) // https://www.w3schools.com/Jsref/jsref_concat_array.asp
+                this.props.googleAPIObj.client.calendar.events
+                .list({
+                  "calendarId": entry.id, 
+                  "timeMax": eventEndDate.toISOString(), 
+                  "timeMin": eventStartDate.toISOString(),
+                })
+                .then((response) => {
+                  if (response.status === 200) {
+                    console.log(response)
+                    let events = response.result.items;
+                    events.forEach((event) => {
+                      // Update the state with the events... one by one. I hope there is a better way to do this
+                      this.setState ({
+                          "date": date,
+                          events: this.state.events.concat([{title: event.summary, description: event.description, index: counter}]) // https://www.w3schools.com/Jsref/jsref_concat_array.asp
+                      });
+                      counter += 1;
                     });
-                    counter += 1;
-                  });
+                  }
+                  else 
+                    throw new Error("Could not return list of calendar events")
                 })
             });
         }
