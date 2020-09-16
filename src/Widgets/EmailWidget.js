@@ -75,12 +75,6 @@ class EmailWidget extends React.Component {
               loading: true,
             });
 
-            // Get user's email address
-            let email = this.props.googleAPIObj.auth2.getAuthInstance().currentUser.get().getBasicProfile().getEmail();
-            // this.props.googleAPIObj.client.gmail.users.labels.list({'userId': 'me'}).then(response => {
-            //     console.log(response);
-            // });
-
             // Email Filter Settings
             let labelIds = ['INBOX']; // Only readin in inbox for now
 
@@ -109,45 +103,51 @@ class EmailWidget extends React.Component {
 
             // Get emails
             // https://developers.google.com/gmail/api/v1/reference/users/messages            
-            this.props.googleAPIObj.client.gmail.users.messages
-            .list({'userId': 'me', 'labelIds': labelIds})
-            .then((response) => {
-              // Get list of messages
-              if (response.status === 200) {
-                let results = [];
-                let c = 0;
-
-                // recursive function to load emails one by one.
-                // first 403 that returns, we stop recursion and
-                // return the emails that were successful.
-                const recursion = (promise) => {
-                  c++;
-                  promise.then(data => {
-                    results.push(data);
-                    if (c < response.result.messages.length) {
-                      recursion(this.getEmail(response.result.messages[c], email, c));
-                    } else {
-                      Promise.resolve(this.setEmails(results));
-                    }
-                  }, (error) => {
-                    console.error(error);
-                    Promise.reject(this.setEmails(results));
-                  });
-                }
-                
-                recursion(this.getEmail(response.result.messages[c]), email, c);
-              }
-            })
-            .catch(err => {
-              console.error(err);
+            let emailList;
+            try {
+              emailList = await this.props.googleAPIObj.client.gmail.users.messages
+              .list({'userId': 'me', 'labelIds': labelIds});
+            } catch (error) {
+              console.error(error);
               this.setEmails(null);
-            });
+            }
+
+            if(emailList) {
+              this.parseEmailList(emailList);
+            }
         }
         else {
             this.setState({
               emails: [],
             });
         }
+    }
+    
+    async parseEmailList (list) {
+      // Get user's email address
+      let email = this.props.googleAPIObj.auth2.getAuthInstance().currentUser.get().getBasicProfile().getEmail();
+      let results = [];
+      let c = 0;
+
+      // recursive function to load emails one by one.
+      // first 403 that returns, we stop recursion and
+      // return the emails that were successful.
+      const recursion = (promise) => {
+        c++;
+        promise.then(data => {
+          results.push(data);
+          if (c < list.result.messages.length) {
+            recursion(this.getEmail(list.result.messages[c], email, c));
+          } else {
+            Promise.resolve(this.setEmails(results));
+          }
+        }, (error) => {
+          console.error(error);
+          Promise.reject(this.setEmails(results));
+        });
+      }
+
+      recursion(this.getEmail(list.result.messages[c]), email, c);
     }
 
     // Get single email from id within list of emails

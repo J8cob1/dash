@@ -220,35 +220,28 @@ class App extends React.Component{
     */
     async updateQuote () {
         console.log("Updating Quote.")
+        
         if(this.state.quoteData === ''){
-          const data = await fetch('https://quotes.rest/qod.json?category=inspire')
-          .then((res) => {
-            if(res.status === 200)
-              return res.json();
-            else
-              throw new Error("Could not retrieve quote at this time.");
-          })
-          .then(data => {
-            return {
-              quote: data.contents.quotes[0].quote, 
-              author: data.contents.quotes[0]?.author || "Unknown",
+            let data;
+            try {
+              data = await fetch('https://quotes.rest/qod.json?category=inspire')
+              data = await data.json();
+              data = {
+                quote: data.contents.quotes[0].quote, 
+                author: data.contents.quotes[0]?.author || "Unknown",
+              }
+            } catch (error) {
+              console.error(error)
+              data = {
+                quote: "Could not load quote.", 
+                author: "",
+              }
             }
-          })
-          .catch((err) => {
-            console.error(err);
-            return {
-              quote: "Could not load quote.", 
-              author: "",
-            }
-          });
-
-          console.log(data);
-          var quoteString = data.quote;
-          var author = data.author;
-          this.setState({
-              quoteData: quoteString,
-              quoteAuthor: author,
-          })
+            
+            this.setState({
+              quoteData: data.quote,
+              quoteAuthor: data.author,
+            })
         }
     }
     // News section

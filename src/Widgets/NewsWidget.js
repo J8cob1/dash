@@ -45,18 +45,22 @@ class News extends Component {
     return composedTime;
   }
 
-  getArticles() {
+  async getArticles() {
     const apiKey = process.env.REACT_APP_NEWS_API_KEY;
+    let news;
+    try {
+      news = await fetch(`https://gnews.io/api/v3/search?q=example&token=${apiKey}`);
+      news = await news.json();
+    } catch (error) {
+      console.error(error);
+    }
 
-    fetch(`https://gnews.io/api/v3/search?q=example&token=${apiKey}`)
-      .then(function (response) {
-          return response.json();
+    if (news) {
+      console.log(news)
+      this.setState({
+        articles: news.articles,
       })
-      .then(data => {
-          const articles = data.articles;
-          console.log(articles);
-          this.setState({ articles: articles });
-      });
+    }
   }
 
   render() {
