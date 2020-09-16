@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { Rnd } from 'react-rnd';
 import "../App.css";
 import { BsInbox, BsShieldFill } from 'react-icons/bs';
+import diff from 'deep-diff';
 
 class EmailWidget extends React.Component {
     // State
@@ -15,7 +16,8 @@ class EmailWidget extends React.Component {
         this.state = {
             box: 'Primary', // Primary, Social, Promotions, Updates, Forums, All
             unread: true, // Read, Unread
-            emails: []
+            emails: [],
+            loading: false,
         };
 
         // https://stackoverflow.com/questions/52894546/cannot-access-state-inside-function
@@ -28,12 +30,14 @@ class EmailWidget extends React.Component {
     // Updates an object whenever the props change
     async componentDidUpdate(oldProps) {
       // https://stackoverflow.com/questions/37009328/re-render-react-component-when-prop-changes
-      if (this.props !== oldProps) {
+      if (this.props.authenticationSetup !== oldProps.authenticationSetup) {
         this.getEmails();
       }
     }
 
+    // Get list of emails to set
     async getEmails() {
+        
         // https://developers.google.com/calendar/quickstart/js#step_2_set_up_the_sample
         // https://developers.google.com/calendar/v3/reference/calendarList/list#php
         // https://developers.google.com/calendar/v3/reference/calendarList/get
@@ -49,12 +53,7 @@ class EmailWidget extends React.Component {
 
         // Get the sign in status
         let isSignedIn = this.props.authenticationSetup === true && this.props.googleAPIObj.auth2.getAuthInstance().isSignedIn.get() === true;
-
-        // Clean out whatever was there before
-        this.setState({
-          emails: []
-        });
-
+        
         // https://developers.google.com/gmail/api/quickstart/js
         // https://developers.google.com/gmail/api/v1/reference
         // https://developers.google.com/gmail/api/v1/reference/users/messages
@@ -71,11 +70,16 @@ class EmailWidget extends React.Component {
         // https://stackoverflow.com/questions/22876978/loop-inside-react-jsx?page=1&tab=votes#tab-top
         if (isSignedIn) {
 
+            // set text to loading while we grab emails
+            this.setState({
+              loading: true,
+            });
+
             // Get user's email address
             let email = this.props.googleAPIObj.auth2.getAuthInstance().currentUser.get().getBasicProfile().getEmail();
-            this.props.googleAPIObj.client.gmail.users.labels.list({'userId': 'me'}).then(response => {
-                console.log(response);
-            });
+            // this.props.googleAPIObj.client.gmail.users.labels.list({'userId': 'me'}).then(response => {
+            //     console.log(response);
+            // });
 
             // Email Filter Settings
             let labelIds = ['INBOX']; // Only readin in inbox for now
@@ -104,38 +108,76 @@ class EmailWidget extends React.Component {
             } // https://www.w3schools.com/js/js_switch.asp
 
             // Get emails
-            // https://developers.google.com/gmail/api/v1/reference/users/messages
-            let counter = 0;
-            let emaiList = this.props.googleAPIObj.client.gmail.users.messages.list({'userId': 'me', 'labelIds': labelIds}).then(response => {
-                // Get list of messages
-                let messages = response.result.messages;
+            // https://developers.google.com/gmail/api/v1/reference/users/messages            
+            this.props.googleAPIObj.client.gmail.users.messages
+            .list({'userId': 'me', 'labelIds': labelIds})
+            .then((response) => {
+              // Get list of messages
+              if (response.status === 200) {
+                let results = [];
+                let c = 0;
 
-                // Make a call for the message details and populate the state array
-                if (messages !== undefined) {
-                    messages.forEach(message => {
-                        // For each email, create an entry in the state array with the email subject and a link to view the email (for more details)
-                        this.props.googleAPIObj.client.gmail.users.messages.get({'userId': 'me', 'id': message.id}).then(response => {
-                            // https://stackoverflow.com/questions/13964155/get-javascript-object-from-array-of-objects-by-value-of-property
-                            this.setState ({ // https://www.w3schools.com/Jsref/jsref_concat_array.asp
-                                "emails": this.state.emails.concat([{
-                                    'subject': response.result.payload.headers.filter(header => {return header.name === "Subject"})[0].value, 
-                                    // https://stackoverflow.com/questions/38877956/get-direct-url-to-email-from-gmail-api-list-messages
-                                    // https://stackoverflow.com/questions/20780976/obtain-a-link-to-a-specific-email-in-gmail
-                                    'link': 'https://mail.google.com/mail?authuser=' + email + '#all/' + message.threadId,
-                                    index: counter
-                                }])
-                            });
-                            counter += 1;
-                        });
-                    })
+                // recursive function to load emails one by one.
+                // first 403 that returns, we stop recursion and
+                // return the emails that were successful.
+                const recursion = (promise) => {
+                  c++;
+                  promise.then(data => {
+                    results.push(data);
+                    if (c < response.result.messages.length) {
+                      recursion(this.getEmail(response.result.messages[c], email, c));
+                    } else {
+                      Promise.resolve(this.setEmails(results));
+                    }
+                  }, (error) => {
+                    console.error(error);
+                    Promise.reject(this.setEmails(results));
+                  });
                 }
+                
+                recursion(this.getEmail(response.result.messages[c]), email, c);
+              }
+            })
+            .catch(err => {
+              console.error(err);
+              this.setEmails(null);
             });
         }
         else {
             this.setState({
-              emails: []
+              emails: [],
             });
         }
+    }
+
+    // Get single email from id within list of emails
+    async getEmail(msg, email, counter) {
+      return this.props.googleAPIObj.client.gmail.users.messages
+      .get({'userId': 'me', 'id': msg.id})
+      .then(response => {
+        if(response.status === 200) {
+          const subject = response.result.payload.headers
+          .find(header =>  header.name === "Subject")?.value
+          || "-No Subject-";
+          const link = `https://mail.google.com/mail?authuser=${email}#all/${msg.threadId}`;
+          const index = counter || 0;
+          //return email object
+          return {
+            subject,
+            link,
+            index,
+          }
+        } else Promise.reject();
+      })
+      .catch(err => Promise.reject(err));
+    }
+
+    // Sets all emails in state at once
+    setEmails(emails) {
+      this.setState({
+        emails: emails || [],
+        loading: false,
+      });
     }
 
     // https://reactjs.org/docs/forms.html
@@ -168,21 +210,24 @@ class EmailWidget extends React.Component {
 
         // Create a placeholder item in case there are no events for the day
         let placeHolder = null;
-        if (isSignedIn) {
+        if (this.state.loading) {
+            placeHolder = <div className="placeholder">Loading...</div>
+        } else if (isSignedIn) {
             placeHolder = <div className="placeholder">No new emails</div>
         } else {
             placeHolder = <div className="placeholder">Please Sign In</div>
         }
 
         // Get calendar events
-        let emails = []
-        this.state.emails.forEach(email => {
-            emails.push(
-                <div className="email" key={email.index}>
-                    {/* https://stackoverflow.com/questions/15551779/open-link-in-new-tab-or-window */}
-                    <a target="_blank" rel="noopener noreferrer" href={email.link}>{email.subject}</a>
-                </div>
-            )
+        // console.log(this.state.emails)
+        const emails = this.state.emails.map( email => {
+            if(email)
+              return (
+                  <div className="email" key={email.index}>
+                      {/* https://stackoverflow.com/questions/15551779/open-link-in-new-tab-or-window */}
+                      <a target="_blank" rel="noopener noreferrer" href={email.link}>{email.subject}</a>
+                  </div>
+              )
         })
 
         return (
