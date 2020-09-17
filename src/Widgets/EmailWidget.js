@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import { Rnd } from 'react-rnd';
 import "../App.css";
 import { BsInbox, BsShieldFill } from 'react-icons/bs';
-import diff from 'deep-diff';
 
 class EmailWidget extends React.Component {
     // State
