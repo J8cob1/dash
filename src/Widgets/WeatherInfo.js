@@ -35,19 +35,27 @@ class WeatherInfo extends Component {
     e.preventDefault();
 
     const city = e.target.elements.city.value;
-    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},us&appid=${API_KEY}&units=metric`);
-    const data = await api_call.json();
+    let api_data;
+    try {
+      api_data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},us&appid=${API_KEY}&units=metric`);
+      api_data = await api_data.json();
+    } catch (err) {
+      console.error(err);
+    }
+
+    if (api_data) {
+      this.setState({
+        temperature: api_data.main.temp,
+        city: api_data.name,
+        country: api_data.sys.country,
+        humidity: api_data.main.humidity,
+        pressure: api_data.main.pressure,
+        speed: api_data.wind.speed,
+        sunrise: api_data.sys.sunrise,
+        description: api_data.weather[0]?.description
+      });
+    }
   
-    this.setState({
-      temperature: data.main.temp,
-      city: data.name,
-      country: data.sys.country,
-      humidity: data.main.humidity,
-      pressure: data.main.pressure,
-      speed: data.wind.speed,
-      sunrise: data.sys.sunrise,
-      description: data.weather[0].description
-    });
   }
 
   render() {

@@ -56,36 +56,39 @@ class CalendarWidget extends React.Component {
         // Get the sign in status
         let isSignedIn = this.props.authenticationSetup === true && this.props.googleAPIObj.auth2.getAuthInstance().isSignedIn.get() === true;
 
-        // Clean out whatever was there before
-        this.setState({
-          "date": date,
-          events: []
-        });
-
         // Get calendar events for the given day
         // https://stackoverflow.com/questions/22876978/loop-inside-react-jsx?page=1&tab=votes#tab-top
         if (isSignedIn) {
-            // Step 1: Get all the calendars
-            // https://developers.google.com/calendar/v3/reference/calendarList/list
-            let calendarList = await this.props.googleAPIObj.client.calendar.calendarList.list();
-            calendarList = calendarList.result.items;
+          let calendars;
+          try {
+              // Step 1: Get all the calendars
+              // https://developers.google.com/calendar/v3/reference/calendarList/list
+              calendars = await this.props.googleAPIObj.client.calendar.calendarList.list();
+              calendars = await this.getAllCalendars(calendars.result.items, eventStartDate, eventEndDate);
+              // Step 2: Get all events for teh current days from each calendar
+            } catch (error) {
+              console.error(error);
+            }
+            
+          const events = calendars.reduce((acc, calendar) => {
+            acc.push(...calendar.result.items)
+            return acc
+          }, [])
 
-            // Step 2: Get all events for teh current days from each calendar
-            // Got a tip from someone
-            let counter = 0;
-            calendarList.forEach(entry => {
-                this.props.googleAPIObj.client.calendar.events.list({"calendarId": entry.id, "timeMax": eventEndDate.toISOString(), "timeMin": eventStartDate.toISOString()}).then((response) => {
-                  let events = response.result.items;
-                  events.forEach((event) => {
-                    // Update the state with the events... one by one. I hope there is a better way to do this
-                    this.setState ({
-                        "date": date,
-                        events: this.state.events.concat([{title: event.summary, description: event.description, index: counter}]) // https://www.w3schools.com/Jsref/jsref_concat_array.asp
-                    });
-                    counter += 1;
-                  });
-                })
+          if(events) {
+            let allEvents = events.map((event, i) => {
+              return {
+                title: event.summary,
+                description: event.description,
+                index: i,
+              }
             });
+
+            this.setState ({
+              "date": date,
+              events: allEvents,
+              });
+          }
         }
         else {
             this.setState({
@@ -93,6 +96,17 @@ class CalendarWidget extends React.Component {
               events: []
             });
         }
+    }
+
+    async getAllCalendars(list, timeStart, timeEnd) {
+      return Promise.all(list.map(calendar => {
+        return this.props.googleAPIObj.client.calendar.events
+        .list({
+          "calendarId": calendar.id, 
+          "timeMax": timeEnd.toISOString(), 
+          "timeMin": timeStart.toISOString(),
+        });
+      }))
     }
 
     render() {

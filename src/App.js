@@ -72,7 +72,8 @@ class App extends React.Component{
             welcomeBackgroundOn: welcomeData,
             movingOn: movingData
         });
-        this.updateQuote();
+        if(quoteData) 
+          this.updateQuote();
     }
 
     async setupLogin() {
@@ -108,7 +109,7 @@ class App extends React.Component{
         if (this.state.authenticationSetup === true && gapi.auth2.getAuthInstance().isSignedIn.get() === false) {
             gapi.auth2.getAuthInstance().signIn().then(() => {
                 this.setState({
-                    ...this.state,
+                  ...this.state,
                     authenticationSetup: true
                 }); // https://www.educative.io/edpresso/how-to-force-a-react-component-to-re-render
             });
@@ -118,7 +119,7 @@ class App extends React.Component{
         if (this.state.authenticationSetup === true && gapi.auth2.getAuthInstance().isSignedIn.get() === true) {
             gapi.auth2.getAuthInstance().signOut().then(() => {
                 this.setState({
-                    ...this.state,
+                  ...this.state,
                     authenticationSetup: true
                 }); // https://www.educative.io/edpresso/how-to-force-a-react-component-to-re-render
             });
@@ -128,12 +129,12 @@ class App extends React.Component{
     toggleSettings = () => error => {
         if(this.state.settings){
             this.setState({
-                ...this.state,
+              ...this.state,
                 settings: false
             })
         } else {
             this.setState({
-                ...this.state,
+              ...this.state,
                 settings: true
             })
         }
@@ -143,7 +144,7 @@ class App extends React.Component{
     toggleMail = () => error => {
         if(this.state.mail){
             this.setState({
-                ...this.state,
+              ...this.state,
                 mail: false
             })
             setLocStorage(mail, false)
@@ -163,7 +164,7 @@ class App extends React.Component{
     toggleCalendar = () => error => {
         if(this.state.calendar){
             this.setState({
-                ...this.state,
+              ...this.state,
                 calendar: false
             })
             setLocStorage(cal, false)
@@ -180,29 +181,24 @@ class App extends React.Component{
 
     };
     // Quote section
-    toggleQuote () {
+    toggleQuote = () => {
+      console.log("Clicked Quote");
+      if(!this.state.quoteData)
         this.updateQuote();
-        if(this.state.quote){
-            this.setState({
-                ...this.state,
-                quote: false
-            });
-            setLocStorage(quote, false)
-        } else {
-            this.setState({
-                ...this.state,
-                quote: true
-            });
-            setLocStorage(quote, true)
 
-        }
-        console.log("Clicked Quote");
+      this.setState((prevState) => {
+        setLocStorage(quote, !prevState.quote);
+        return {
+          quote: !prevState.quote,
+        };
+      })
     };
+
     // Weather section
     toggleWeather = () => error => {
         if(this.state.weather){
             this.setState({
-                ...this.state,
+              ...this.state,
                 weather: false
             })
             setLocStorage(weather, false)
@@ -218,26 +214,33 @@ class App extends React.Component{
         console.log("Clicked Weather");
     };
 
+    /*
+     * Quote API
+     * https://quotes.rest/
+    */
     async updateQuote () {
+        console.log("Updating Quote.")
+        
         if(this.state.quoteData === ''){
-            var temp = await fetch('https://quotes.rest/qod.json?category=inspire')
-                .then(function (res) {
-                    return res.json();
-                })
-                .catch(function(err){
-                    console.log(err);
-                });
-
-            console.log(temp);
-            var quoteString = temp.contents.quotes[0].quote;
-            var author = temp.contents.quotes[0].author;
-            if(author === null){
-                author = "Unknown"
+            let data;
+            try {
+              data = await fetch('https://quotes.rest/qod.json?category=inspire')
+              data = await data.json();
+              data = {
+                quote: data.contents.quotes[0].quote, 
+                author: data.contents.quotes[0]?.author || "Unknown",
+              }
+            } catch (error) {
+              console.error(error)
+              data = {
+                quote: "Could not load quote.", 
+                author: "",
+              }
             }
+            
             this.setState({
-                ...this.state,
-                quoteData: quoteString,
-                quoteAuthor: author
+              quoteData: data.quote,
+              quoteAuthor: data.author,
             })
         }
     }
