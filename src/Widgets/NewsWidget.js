@@ -55,7 +55,7 @@ class News extends Component {
       console.error(error);
     }
 
-    if (news) {
+    if (news && news.articles !== undefined) {
       console.log(news)
       this.setState({
         articles: news.articles,
