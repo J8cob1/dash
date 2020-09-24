@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { Rnd } from 'react-rnd';
 import "../App.css";
 import { BsInbox, BsShieldFill } from 'react-icons/bs';
+import { InputGroup } from 'react-bootstrap';
 
 class EmailWidget extends React.Component {
     // State
@@ -16,6 +17,7 @@ class EmailWidget extends React.Component {
             box: 'Primary', // Primary, Social, Promotions, Updates, Forums, All
             unread: true, // Read, Unread
             emails: [],
+            interval: null,
             loading: false,
         };
 
@@ -24,19 +26,22 @@ class EmailWidget extends React.Component {
         this.updateEmailConfig = this.updateEmailConfig.bind(this);
         this.updateBox = this.updateBox.bind(this)
         this.updateUnread = this.updateUnread.bind(this)
+        this.updateInterval = this.updateInterval.bind(this)
     }
 
     // Updates an object whenever the props change
     async componentDidUpdate(oldProps) {
       // https://stackoverflow.com/questions/37009328/re-render-react-component-when-prop-changes
       if (this.props.authenticationSetup !== oldProps.authenticationSetup) {
-        this.getEmails();
+        let emails = await this.getEmails();
+        this.setState({
+          ...this.state,
+          interval: setInterval(() => {this.getEmails();}, 60000)});
       }
     }
 
     // Get list of emails to set
     async getEmails() {
-        
         // https://developers.google.com/calendar/quickstart/js#step_2_set_up_the_sample
         // https://developers.google.com/calendar/v3/reference/calendarList/list#php
         // https://developers.google.com/calendar/v3/reference/calendarList/get
@@ -146,7 +151,9 @@ class EmailWidget extends React.Component {
         });
       }
 
-      recursion(this.getEmail(list.result.messages[c]), email, c);
+      if (list.result.messages !== undefined) {
+        recursion(this.getEmail(list.result.messages[c]), email, c);
+      }
     }
 
     // Get single email from id within list of emails
@@ -174,6 +181,7 @@ class EmailWidget extends React.Component {
     // Sets all emails in state at once
     setEmails(emails) {
       this.setState({
+        ...this.state, // Not sure if this is line of code is needed, but I didn't want it to wipe the other variables because I added one
         emails: emails || [],
         loading: false,
       });
@@ -203,6 +211,20 @@ class EmailWidget extends React.Component {
         console.log(event.target.checked);
     }
 
+    updateInterval(event) {
+      // Clear old interval
+      clearInterval(this.state.interval) // https://stackoverflow.com/questions/452003/cancel-kill-window-settimeout-before-it-happens and https://stackoverflow.com/questions/3138756/calling-a-function-every-60-seconds
+
+      // Set new one
+      let interval = event.target.value;
+      if (interval > 0) {
+        this.setState({
+          ...this.state,
+          interval: setInterval(() => {this.getEmails();}, interval) // https://stackoverflow.com/questions/452003/cancel-kill-window-settimeout-before-it-happens and https://stackoverflow.com/questions/3138756/calling-a-function-every-60-seconds
+        });
+      }
+    }
+
     render() {
         // Sign in status
         let isSignedIn = this.props.authenticationSetup === true && this.props.googleAPIObj.auth2.getAuthInstance().isSignedIn.get() === true;
@@ -218,7 +240,6 @@ class EmailWidget extends React.Component {
         }
 
         // Get calendar events
-        // console.log(this.state.emails)
         const emails = this.state.emails.map( email => {
             if(email)
               return (
@@ -248,6 +269,8 @@ class EmailWidget extends React.Component {
                             https://react-bootstrap.netlify.app/components/buttons/
                         */}
                         <Form inline>
+                          
+                          <Form.Group> {/* https://react-bootstrap.github.io/components/forms/ */}
                             <Form.Label>Category Select</Form.Label>
                             <Form.Control 
                                 as="select" 
@@ -261,14 +284,35 @@ class EmailWidget extends React.Component {
                                 <option>Forums</option>
                                 <option>All</option>
                             </Form.Control>
+                          </Form.Group>
+
+                          <Form.Group>
                             <Form.Check 
-                                type="switch"
-                                label="See Only Unread Emails"
-                                id="unread-switch"
-                                onChange={this.updateUnread}
-                                defaultChecked={this.state.unread} // https://stackoverflow.com/questions/32174317/how-to-set-default-checked-in-checkbox-reactjs
+                                  type="switch"
+                                  label="See Only Unread Emails"
+                                  id="unread-switch"
+                                  onChange={this.updateUnread}
+                                  defaultChecked={this.state.unread} // https://stackoverflow.com/questions/32174317/how-to-set-default-checked-in-checkbox-reactjs
                             />
-                            <Button variant="info" onClick={this.getEmails}>Update</Button>
+                          </Form.Group>
+
+                          <Form.Group>
+                            <Form.Label>Update Interval</Form.Label>
+                            <Form.Control 
+                                as="select" 
+                                onChange={this.updateInterval}
+                                readOnly 
+                                custom
+                            >
+                                <option value="60000">Every Minute</option>
+                                <option value="300000">Every 5 Minutes</option>
+                                <option value="600000">Every 10 Minutes</option>
+                                <option value="1800000">Every 30 Minutes</option>
+                                <option value="0">Manual Only</option>
+                            </Form.Control>
+                            <Button variant="info" onClick={this.getEmails}>Update Now</Button>
+                          </Form.Group>
+                          
                         </Form>
                         <hr/>
                     </div>
